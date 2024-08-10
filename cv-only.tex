@@ -1,0 +1,539 @@
+%!TeX program = pdflatex
+% Thomas Eskridge's Curriculum Vitae based on Geoff Boeing's 
+% Email: teskridge@fit.edu
+% Web: https://thomaseskridge.com/
+% Repo: https://github.com/tce/cv
+
+\documentclass[12pt,letterpaper]{report}
+
+\usepackage[T1]{fontenc} % output T1 font encoding (8-bit) for accented characters as single glyph
+\usepackage[strict,autostyle]{csquotes} % smart and nestable quote marks
+\usepackage[USenglish]{babel} % regionalize hyphens, quote marks, etc automatically
+\usepackage{microtype}% improve text appearance with kerning, etc
+\usepackage{datetime} % enable formatting of date output
+\usepackage{tabto}    % make nice tabbing
+\usepackage{hyperref} % enable hyperlinks and pdf metadata
+\usepackage{geometry} % manually set page margins
+\usepackage{enumitem} % enumerate with [resume] option
+\usepackage{titlesec} % allow custom section fonts
+\usepackage{setspace} % custom line spacing
+\usepackage{multicol}
+\usepackage{multirow}
+
+\usepackage[backend=biber, maxnames=99, giveninits=true]{biblatex}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+%\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+%\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{wrapfig}
+%\usepackage[backend=biber, maxnames=99, giveninits=true]{biblatex}
+%\usepackage{graphicx}
+%\usepackage{booktabs}
+%\usepackage{pdfpages}
+
+
+
+\defbibenvironment{myPublicationListYearStyle}
+  {\list
+     {\iffieldequals{year}{\bibyear}
+        {}
+        {\printfield{year}\savefield{year}{\bibyear}}}
+     {\setlength{\labelwidth}{2em}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+   \renewcommand*{\makelabel}[1]{\hss##1}}%
+  {\endlist}
+  {\item}
+
+
+\addbibresource{papers.bib}
+
+\bibliography{papers.bib}
+
+\nocite{*}
+
+\defbibfilter{papers}{
+  type=article or
+  type=inproceedings
+}
+
+
+% what is your name?
+\newcommand{\myname}{Thomas C Eskridge}
+
+% select default typefaces
+\usepackage{ebgaramond} % document's serif typeface
+\usepackage{helvet}     % document's sans serif typeface
+
+% how far to tab for list items with left-aligned date: different fonts need different widths
+\newcommand{\listtabwidth}{1.7cm}
+
+% define font to use as document's title
+\newcommand{\namefont}[1]{{\normalfont\bfseries\Huge{#1}}}
+
+% set section heading fonts and before/after spacing
+\SetTracking{encoding=*, family=\sfdefault}{30} % increase sans serif headings tracking
+\titleformat{\section}{\lsstyle\sffamily\small\bfseries\uppercase}{}{}{}{}
+\titlespacing{\section}{0pt}{30pt plus 4pt minus 4pt}{8pt plus 2pt minus 2pt}
+
+% set subsection heading fonts and before/after spacing
+\titleformat{\subsection}{\lsstyle\sffamily\footnotesize\bfseries}{}{}{}{}
+\titlespacing{\subsection}{0pt}{16pt plus 4pt minus 4pt}{4pt plus 2pt minus 2pt}
+
+% set page margins (assumes letter paper)
+\geometry{body={6.5in, 9.0in},
+    left=1.0in,
+    top=1.0in}
+
+% prevent paragraph indentation
+\setlength\parindent{0em}
+
+% set line spacing
+\setstretch{0.9}
+
+% define space between list items
+\newcommand{\listitemspace}{0.25em}
+
+% make unordered lists without bullets and use compact spacing
+\renewenvironment{itemize}
+{\begin{list}{}{\setlength{\leftmargin}{0em}
+                \setlength{\parskip}{0em}
+                \setlength{\itemsep}{\listitemspace}
+                \setlength{\parsep}{\listitemspace}}}
+{\end{list}}
+
+% make tabbed lists so content is left-aligned next to years
+\TabPositions{\listtabwidth}
+\newlist{tablist}{description}{3}
+\setlist[tablist]{leftmargin=\listtabwidth,
+    labelindent=0em,
+    topsep=0em,
+    partopsep=0em,
+    itemsep=\listitemspace,
+    parsep=\listitemspace,
+    font=\normalfont}
+
+% print only the month and year when using \today
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
+
+% define hyperlink appearance and metadata for pdf properties
+\hypersetup{
+    colorlinks  = true,
+    urlcolor    = black,
+    citecolor   = black,
+    linkcolor   = black,
+    pdfauthor   = {\myname},
+    pdfkeywords = {city planning, housing, street networks, transportation, urban design, urban informatics},
+    pdftitle    = {\myname: Curriculum Vitae},
+    pdfsubject  = {Curriculum Vitae},
+    pdfpagemode = UseNone
+}
+
+\begin{document}
+
+    \raggedright{}
+
+    % display your name as the document title
+    \namefont{\myname}
+
+    % affiliation and contact info blocks
+    \vspace{1em}
+    \begin{minipage}[t]{0.700\textwidth}
+        % current primary affiliation, left-aligned
+        Department of Computer Science and Human-Centered Design \\
+        Florida Tech Research Institute (FTRI) \\
+        L3Harris Institute of Assured Information \\
+        Florida Institute of Technology
+    \end{minipage}
+    \begin{minipage}[t]{0.295\textwidth}
+        % contact info details, right-aligned
+        \flushright{}
+        \href{mailto:teskridge@fit.edu}{teskridge@fit.edu} \\
+        +1 321 674 7455 \\
+        \href{https://thomaseskridge.com}{https://thomaseskridge.com}
+    \end{minipage}
+
+
+    \section*{Education}
+
+    \begin{tablist}
+
+        \item[Ph.D.] \tab{}Philosophy: Philosophy, Computers, and Cognitive Science \\Binghamton University, 2012. \\
+                            Dissertation: Continuous Flow Analogical Reasoning
+        \item[M.S.]  \tab{}Computer Science \\Southern Illinois University, Carbondale,  1987. \\
+			 Thesis: Analogical Problem Solving
+        \item[B.S.]  \tab{}Computer Science \\Southern Illinois University, Carbondale,  1986.
+
+
+    \end{tablist}
+
+
+
+    \section*{Appointments}
+
+    \begin{tablist}
+
+        \item[2024--]   \tab{}Florida Institute of Technology \\
+                              Professor, Department of Computer Science and Human-Centered Design and\\
+                              L3Harris Institute for Assured Information and \\
+                              Florida Tech Research Institute (FTRI)
+
+%        \item[2024--]   \tab{}Florida Institute of Technology \\
+%                              Program Chair, Human-Centered Design
+%
+        \item[2015--24]   \tab{}Florida Institute of Technology \\
+                              Associate Professor, Department of Computer Science and Human-Centered Design and\\
+                              L3Harris Institute for Assured Information
+
+        \item[2014--15]   \tab{}Florida Institute of Technology \\
+                              Research Associate Professor, L3Harris Institute for Assured Information
+                              
+    \end{tablist}
+
+    \section*{Professional Experience}
+
+    \begin{tablist}
+
+        \item[2012--15]   \tab{}Institute for Human and Machine Cognition\\
+                              Research Scientist, Human-centered computing and visualization
+
+        \item[2001--12]   \tab{}Institute for Human and Machine Cognition\\
+                              Research Associate, Human-centered computing and visualization
+                              
+        \item[1992--01]\tab{}Intelligent Reasoning Systems, Inc.\\
+                              Founder, Chief Scientist, Automated Visual Inspection
+ 
+         \item[1990--92]\tab{}Computing Research Laboratory, New Mexico State University\\
+                              Computing Specialist II, Model-based Reasoning
+                              
+        \item[1989--90]\tab{}Lockheed Missiles and Space Corporation\\
+                              Senior Scientific Programmer, Spatial Computing and Organizational Movement
+    \end{tablist}
+
+    \section*{Research Areas}
+
+    \begin{itemize}
+
+        \item Human-centered, human-aware artificial intelligence
+        \item Visualization for explainability and human performance enhancement
+        \item Human-automation teamwork
+
+    \end{itemize}
+
+
+
+\section*{Publications}\label{cvpubs}
+    \nocite{*}
+    \begin{refcontext}[sorting=ydnt]{}
+
+    \printbibliography[title={Conferences},env=myPublicationListYearStyle,                         type=inproceedings,heading=subbibliography]
+    \printbibliography[keyword={PEER}, title={Journals},env=myPublicationListYearStyle,            type=article,      heading=subbibliography]
+    \printbibliography[keyword={WORKING}, title={Invited Journals},env=myPublicationListYearStyle, type=article,      heading=subbibliography]
+    \printbibliography[keyword={PUB},title={Edited Volumes},env=myPublicationListYearStyle,        type=book,         heading=subbibliography]
+    \printbibliography[title={Book Chapters},env=myPublicationListYearStyle,                       type=incollection, heading=subbibliography]
+    \printbibliography[title={Patents},env=myPublicationListYearStyle,                             type=misc,         heading=subbibliography]
+    \end{refcontext}
+
+  
+%    \section*{Invited Talks}
+
+    \nocite{*}
+    \begin{refcontext}[sorting=ydnt]{}
+    \printbibliography[keyword={INVITED}, title={Invited Talks},env=myPublicationListYearStyle, type=book,heading=subbibliography]
+    \printbibliography[keyword={INVITED-LOCAL}, title={Campus Talks},env=myPublicationListYearStyle, type=book,heading=subbibliography]
+    \end{refcontext}
+
+
+%\newpage 
+%     \section*{Grants and Awards}
+
+% Grants participated in as Principal Investigator (PI), Technical Lead (TL) or Contributor (C).
+
+% \begin{table}[!ht]
+%     \centering
+%     \begin{tabular}{|l|l|l|l|l|l|}
+%     \hline
+%       Agency & Role & Amount & Title & GS & Duration \\ \hline
+%         \textit{DARPA*} & \textit{PI} & \textit{\$849,289} & \textit{CISOC} & \textit{4} & \textit{sub abs 1/24-1/26} \\
+%         DOTE & KP & \$160,000 & TETRA & 1 &9/23-2/24 \\
+%         UCLA & PI & \$5,740.00 & Diverse Intelligences  & 1 & 1/22-10/22 \\ 
+%         FAA & PI & \$160,000.00 & Human Input Systems for CST  & 3 & 6/21-8/22 \\ 
+%         AFRL/BBN & PI & \$134,878.00 & LEAP & 0 & 6/21-9/22 \\ 
+%         AFRL/BBN & TL & \$300,000.00 & LWAP-BART & 3 & 7/20-7/22 \\ 
+%         AFRL/BBN & TL & \$150,000.00 & WAND  & 2 &  5/19-5/20 \\ 
+%         DHS    & TL     & \$1,618,212.00 & FDCE   & 3  & 9/18 - 9/21 \\ 
+%         AFRL/BBN & C     & \$212,500.00 & DICE & 1 &8/17-7/19 \\ 
+%         DoD    & TL     & \$485,841.00 & MTO & 2 & 11/17-11/18 \\ 
+%         DHS    & KP     & \$1,285,246.00 & FC2  & 4 &  7/14-12/18 \\ 
+%         AFRL   & TL     & \$1,000,000.00 & SAWD-2 &3 & 1/17-9/18 \\ 
+%         AFRL   & KP     & \$1,311,881.00 & SAWD-1 & 3 & 3/15-1/17 \\ 
+%         AFRL/BBN & KP     & \$870,000.00 & CHOPD & 1 &  3/15-9/18 \\ 
+%         AFRL/BBN & TL     & \$399,000.00 & BART & 2 & 4/16-11/18 \\ 
+%         AFRL/BBN & TL     & \$150,000.00 & InDEED & 3  &4/16-4/18 \\ 
+%         DHS/IAI & C     & \$522,000.00 & SDNA & 2 & 9/16-9/18 \\ 
+%         Securboration & C     & \$150,000.00 & JCAUSE & 0&  1/17-1/19 \\ 
+%         AFRL   & KP     & \$1,933,000.00 & SBC2  & 3 & 2/13-11/16 \\ 
+%         Rockwell Collins&KP  &\$100,000.00& APM & 1 & 3/14-9/15\\ \hline
+% As PI & & 		\$300,618.00 & \\
+% As PI/TL last 3 years & & 		\$2,368,830.00 & \\
+% As PI/TL & & \$6,336,671.00 & \\
+% Total involvement  &&		\$10,948,298.00 & \\ \hline
+%     \end{tabular}
+% \end{table}
+
+% \newpage
+    \section*{Conference Activity}
+
+    \subsection*{Program Committee}
+    \begin{tablist}
+        \item[2025] \tab{}$17^{th}$ International Conference on Agents and Artificial Intelligence (ICAART25)
+        \item[2025] \tab{}$9^{th}$ International Conference on Human Computer Interaction Theory and Applications (HUCAPP25)
+        \item[2024] \tab{}$8^{th}$ International Conference on Computer-Human Interaction Research and Applications (CHIRA24)
+        \item[2023] \tab{}Senior Committee Florida Conference on Recent Advances in Robotics (FCRAR)
+        \item[2020-22] \tab{}Florida Conference on Recent Advances in Robotics (FCRAR)
+        \item[2022] \tab{}Association for the Advancement of Artificial Intelligence (AAAI) Conference on Artificial Intelligence
+        \item[2022] \tab{}Artificial Intelligence in Education
+        \item[2014-23] \tab{}International Conference on  Biologically Inspired Cognitive Architectures (BICA)
+        \item[2018] \tab{}International Conference on Case-Based Reasoning (ICCBR)
+        \item[2004-14] \tab{}Conferences on Concept Mapping 
+        \item[2002-05] \tab{}Florida Artificial Intelligence Research Society FLAIRS Conference
+        \item[1992] \tab{}Third Workshop on Battlefield Intelligence for AirLand Operations
+        \item[1991] \tab{}The Second Workshop of Weather and Terrain for the Intelligence Preparation of the Battlefield
+    \end{tablist}
+
+    \subsection*{Tracks Chaired}
+    \begin{tablist}
+        \item[2018] \tab{}\enquote{Human-agent teamwork for cyber operations} Florida Artificial Intelligence Research Society Conference (FLAIRS-31)
+    \end{tablist}
+
+    \subsection*{Sessions Chaired}
+
+    \begin{tablist}
+
+        \item[2021] \tab{}\enquote{Challenges in Teaming.} CAE-R Workshop on the human element in autonomous cyber security, Melbourne, FL
+
+    \end{tablist}
+
+    \subsection*{Invited Panelist}
+    \begin{tablist}
+      \item[2023] \tab{}''The human element'', Adaptive Cyber Defense 2023, Melbourne, FL
+    \end{tablist}
+
+    \subsection*{Peer Review}
+
+    \begin{tablist}
+        \item[2012-21] \tab{}International Conference on Biologically Inspired Cognitive Architectures
+        \item[2004-14] \tab{}International Conference on Concept Mapping
+        \item[2020-23] \tab{}Florida Conference on Recent Advances in Robotics (FCRAR)
+        \item[2022-23] \tab{}Association for the Advancement of Artificial Intelligence (AAAI) Conference on Artificial Intelligence
+        \item[2018] \tab{}International Conference on Case-Based Reasoning (ICCBR)
+        \item[2004-14] \tab{}Conferences on Concept Mapping 
+        \item[2002-05] \tab{}Florida Artificial Intelligence Research Society FLAIRS Conference
+    \end{tablist}
+
+
+    \section*{Courses Taught}
+
+    \begin{itemize}
+        \item CSE5800 Interacting with Large Language Models (Created)
+        \item HCD6380 Creative and Design Thinking (Created)
+        \item HCD5802 Usability Engineering (Created)
+        \item HCD6701 Research Methods (Created) 
+        \item CYB5800 Information Visualization (Created)
+        \item CSE5400 Introduction to Human-Centered Design (Created)
+        \item CSE5800 Deep Learning (Created)
+        \item CSE5290 Introduction to Artificial Intelligence (Created)
+        \item CSE5310 Management and Processing of Big Data (Created)
+        \item CYB5800 Network Security Reasoning (Created) 
+        \item CYB5675 Data Mining for Cybersecurity (Created)
+    \end{itemize}
+
+    \section*{Service}
+
+    \subsection*{Academic Journal Editorial Boards}
+
+    \begin{itemize}
+        \item \textit{Journal of Theoretical and Experimental Artificial Intelligence}  2016--
+    \end{itemize}
+
+    \subsection*{Academic Journal Peer Review}
+
+    \begin{itemize}
+        \item \textit{Journal of Theoretical and Experimental Artificial Intelligence}
+        \item \textit{IEEE Transactions on Cybernetics}
+        \item \textit{IEEE Transactions on Systems, Man, and Cybernetics}
+        \item \textit{Sustainability}
+        \item \textit{Applied Sciences}
+        \item \textit{Multimodal Technologies and Interaction}
+        \item \textit{Frontiers in Psychology}
+        \item \textit{Electronics}
+        \item \textit{Information}
+        \item \textit{Biologically Inspired Cognitive Architectures (BICA) Journal}
+    \end{itemize}
+
+    \subsection*{Funding Agency Peer Review}
+
+    \begin{itemize}
+
+        \item National Science Foundation
+
+    \end{itemize}
+
+    \subsection*{Service to University}
+
+    \begin{itemize}
+        \item Served on the University Library Committee
+        \item Served on the University Research Council
+    \end{itemize}
+
+    \subsection*{Service to College}
+
+    \begin{itemize}
+        \item Served as Co-Chair of the College Promotion and Tenure Committee
+        \item Served on the College Promotion and Tenure Committee
+        \item Served as Co-Chair of the COES Dean search committee
+    \end{itemize}
+
+    \subsection*{Service to Department}
+
+    \begin{itemize}
+        \item Redeveloped Human Centered Design Master's and Ph.D. programs
+        \item Admissions for Human Centered Design Master's and Ph.D. programs
+        \item Assisted in creation and development of Data Science Certificate and Degree Program
+        \item Developed four of the five required HCD core classes (with support from graduate students)
+        \item Developed CYB 5675  Data mining for cybersecurity course for on campus and on line use
+    \end{itemize}
+
+    \subsection*{Doctoral Advisor (graduates in bold)}
+
+    \begin{itemize}
+        \item \textbf{2022 Vijayanth Tummala, Advancing Human-Agent Teamwork, CS PhD, Assistant Professor, Embry-Riddle Aeronautical University, Daytona Beach, FL}
+        \item \textbf{2021 Troy Ricardo Weekes, Flow Choice Architecture: Cognitive Augmentation of Knowledge Workers, HCD PhD, Research Associate L3Harris Institute for Assured Information, Melbourne, FL}
+        \item \textit{expected Fall 2024} Kazuhiko Momose, Compositional Human-Agent Teams, HCD PhD Candidate
+        \item current Ali Mohammad K Almashykhi, CS PhD
+        \item current Alita Regi, HCD PhD
+        \item current Hisham Ghunaim, HCD PhD
+        \item current Victor Kitmanyen, HCD PhD
+        \item current Warren Harrell, HCD PhD
+        \item current Waseem Samkari, CS PhD
+    \end{itemize}
+
+    \subsection*{Masters Advisor (graduates in bold)}
+
+    \begin{itemize}
+        \item \textbf{2024 Ruchir Gupta, Investigating the Impact of Human-Centered Interface Design on the User Experience of Mobile Device Users, HCD MS, Product Designer, Prototype Lab at Groundswell, Inc., Melbourne FL}
+        \item \textbf{2024 Srushti Nitin Ghadge, AI-Powered Information Retrieval in Meeting Records and Transcripts
+Enhancing Efficiency and User Experience, HCD MS, UX Researcher and UI Designer at Macmillan Learning}        
+        \item \textbf{2022 Brad Thomas Costa, A Co-Evolutionary Approach to Test Case Generation for Safety-Critical Systems, CS MS, Directory of Engineering, Sentry View Systems, Melbourne, FL}
+        \item \textbf{2020 Kleanthis Zisis Tegos, Real-Time Action Classification using Intermediate Skeletal Pose Estimation, CS MS, Software Engineer, Microsoft, Miami, FL}
+        \item \textbf{2018 Daljeet Kaur Kaushal, Big Data Architectures for Deep Learning, CS MS, Software Associate, Goldman Sachs, Jersey City, New Jersey}
+        \item \textbf{2018 Tyler Culp, Infrastructure-based Access Policy Enforcement using Software-Defined Networks, CS MS, Software Engineer, Maxar Technologies, Melbourne FL}
+        \item current Andrew Biron, HCD MS
+        \item current Bianca Ebanks, HCD MS
+        \item current Lalith Nadipalli, HCD MS
+        \item current Rahul Mehta, CS MS
+        \item current Shivanand Gujjari, HCD MS
+        \item current Uditkumar Ajitkumar Nair, HCD MS
+    \end{itemize}
+
+    \subsection*{Committee}
+    \begin{itemize}
+    \item current Kendall Carmody, Evaluating the Impact of Technological Immersion and Content Immersion on Presence, Engagement, Emotional State, and Stress in a Virtual Urban Air Mobility Piloting Context, Aviation Sciences, PhD
+    \item current Christopher Stricklan, Binary Diversity, Computer Science PhD
+    \item current Candice Chambers, Computer Science PhD
+    \item current Godwyll Aikins, Computer Science PhD
+    \item current James Riswick-Estelle, Behavior Analysis PhD
+    \item  2023 Eric Lawrence Demirjian, Artificial Intelligence Superteams \& Augmentation Strategies: Increasing Performance of High-Functioning Virtual Team Members Via Human Machine Teaming Enhancements, Business PhD
+    \item 2022 Kendall A Carmody, The Effect of Level of Immersion on Learning in a Virtual Maintenance Training Task, AHF MS External
+    \item 2021 Haoruo Fu, Assessment of the Skeletonization and Motion Monitoring System for the Security Efficiency of the United States Airports, Applied Aviation Safety MS
+    \item 2021 James Riswick-Estelle, Algorithms for Algorithms: Teaching Problem-Solving in Computer Science, ABA OBM MS External
+    \item 2020 Mary Catherine (Kay) Michel, A Bio-inspired Classification System for Cyber-Physical-Human Identity Resolution, CS PhD
+    \item 2019 Seyed Mohammad Mahdi Seyednezhad, A Network-Driven Approach for Characterizing Emoji Usage in Social Media, CS PhD
+    \item 2019 Sharon Sue Chinoy, Human-Centered Enterprise Resource Maintenance Management, HCD PhD
+    \item 2019 Milton Stafford, Applying Formal Methods for Integrating Advanced Algorithms in Safety Critical Systems, CS MS
+    \item 2018 Fitzroy Nembhard, A Recommender System for Improving Program Security Through Source Code Mining and Knowledge Extraction, CS PhD
+    \item 2018 Ondrej Doule, Adaptive Spaceship Cockpit Architecture, HCD PhD    
+    \item 2018 Timothy A Davis, Illegitimate Tasks and Employee Silence: A Moderated Mediation Model, IOP MS External
+    \item 2018 Dhanish Mehta, On the Automation of Cyber Experimentation, CS MS
+    \item 2018 Ed Mathews, Non-thesis, Meteorology MS
+    \item 2018 Caleb Ryberg, Non-thesis, Meteorology MS
+    \item 2017 Samir Mammadov, High Fidelity Adaptive Cyber Emulation, IACyber MS
+    \item 2016 Punica Bhardwaj, Soteria: A Persuasive eSecurity Assistant, IACyber MS
+    \item 2015 Evan Lawrence Stoner, A Foundation for Cyber Experimentation CS MS
+
+    \end{itemize}
+
+    \section*{Memberships}
+
+    \begin{itemize}
+
+        \item Association for the Advancement of Artificial Intelligence (AAAI)
+        \item American Association for the Advancement of Science (AAAS)
+        \item Sigma Xi
+        \item Cognitive Science Society
+        \item Institute of Electrical and Electronics Engineers (IEEE)
+    \end{itemize}
+
+
+
+    \section*{Consulting}
+
+    \begin{tablist}
+        \item[2020--  ] \tab{}HyLighter, LLC, Tallahassee, FL
+        \item[2024--24] \tab{}Sentry View Systems, Melbourne, FL
+        \item[2021--21] \tab{}Sentry View Systems, Melbourne, FL
+        \item[2016--17] \tab{}Modus Operandi, Melbourne, FL
+    \end{tablist}
+
+% \subsection*{Supporting Documentation for Teaching and Related Activities}
+% Course evaluations are included in the file ``Eskridge-course-evaluations.pdf''
+
+% \subsection*{Supporting Documentation for Research and Related Activities}
+% A collection of the first page of many of my papers and patents are included in the file ``Eskridge-titlepages.pdf''.  A selection of representative papers is included in the file ``Eskridge-FivePapers.zip''.  Access to all full papers is available at \url{https://www.thomaseskridge.com}.
+
+\end{document}
+
+    % display today's date as Month Year after a vertical space below the end of the text
+    \begin{center}
+        \vfill
+        Updated \monthyeardate\today
+    \end{center}
+
+
+
+% Items in this appendix would normally include copies of papers, but could also include copies of proposal abstracts, letters of research awards, or letters of notification of honors, such as outstanding paper awards. If the list of research activities called for in "Research and Scholarly Activities" (Section III) is extensive, it could be included here and referred to in that section.
+
+% \subsection*{Supporting Documentation for Service Activities}
+% Items included here could be letters of commendation, copies of service reports authored by the candidate, or more detailed descriptions of service than is possible in "Service Activities" (Section IV).
+
+% \subsection*{Supporting Documentation for Professional Practice}
+% Items included here might include notification of professional registration, letters of commendation for consulting or clinical practice, or syllabi and manuals developed for short-courses, workshop or conferences.
+
+% \subsection*{Department Head Letter of Nomination}
+% This appendix will contain two important letters:
+
+% \begin{itemize}
+% \item A brief letter from the candidate addressed to the department head/program chair that states "This letter certifies that I have reviewed my dossier and that the entries and substantiation thereof are accurate."
+% \item A letter from the department head/program chair nominating the candidate for promotion. The letter should state the degree of support for the nomination in the department/program. For promotion to full professor, identifying the support of the department’s/program’s full professors is important. Copies of the faculty member’s annual goal/performance evaluations for the past three years could be included in this appendix.
+% \end{itemize}
+
+% \subsection*{Letters of Recommendation from Outside Reviewers}
+% Include a brief statement of the credentials of each person from whom letters have been solicited. It is expected that for promotion to full (associate) professor at least five (three) letters will be solicited. Include what aspect of the candidate’s performance the referee is competent to judge and why. Include all letters received. These letters should be added to the dossier by the department head/program chair after the candidate has made his/her final review of the dossier to afford the recommender’s confidentiality.
+
+% The academic unit head should write all requests for evaluations. The candidate should not solicit these letters although s/he may suggest names of references. The letters of request should clearly state what kind of an evaluation is being sought (the factors to be evaluated, the rank for which the person is being recommended and other pertinent information). Wherever reasonable, one or both of the following questions should be asked. From what you know of this person, would you recommend him/her for promotion at your institution?
+
+% Where does the candidate rank among his/her peers? As a courtesy to those being asked to write letters, a current copy of the candidate’s résumé should be sent.
+

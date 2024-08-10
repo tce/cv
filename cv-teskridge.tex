@@ -1,8 +1,8 @@
 %!TeX program = pdflatex
-% Geoff Boeing's Curriculum Vitae
-% Email: boeing@usc.edu
-% Web: https://geoffboeing.com/
-% Repo: https://github.com/gboeing/cv
+% Thomas Eskridge's Curriculum Vitae based on Geoff Boeing's 
+% Email: teskridge@fit.edu
+% Web: https://thomaseskridge.com/
+% Repo: https://github.com/tce/cv
 
 \documentclass[12pt,letterpaper]{report}
 
@@ -17,6 +17,59 @@
 \usepackage{enumitem} % enumerate with [resume] option
 \usepackage{titlesec} % allow custom section fonts
 \usepackage{setspace} % custom line spacing
+\usepackage{multicol}
+\usepackage{multirow}
+
+\usepackage[backend=biber, maxnames=99, giveninits=true]{biblatex}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+%\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+%\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{wrapfig}
+%\usepackage[backend=biber, maxnames=99, giveninits=true]{biblatex}
+%\usepackage{graphicx}
+%\usepackage{booktabs}
+%\usepackage{pdfpages}
+
+
+
+\defbibenvironment{myPublicationListYearStyle}
+  {\list
+     {\iffieldequals{year}{\bibyear}
+        {}
+        {\printfield{year}\savefield{year}{\bibyear}}}
+     {\setlength{\labelwidth}{2em}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+   \renewcommand*{\makelabel}[1]{\hss##1}}%
+  {\endlist}
+  {\item}
+
+
+\addbibresource{papers.bib}
+
+\bibliography{papers.bib}
+
+\nocite{*}
+
+\defbibfilter{papers}{
+  type=article or
+  type=inproceedings
+}
+
 
 % what is your name?
 \newcommand{\myname}{Thomas C Eskridge}
@@ -90,8 +143,455 @@
 }
 
 \begin{document}
+
     \raggedright{}
 
+\begin{tabular}{ c l }
+  \multirow{6}{*}{\includegraphics[height=1.75in]{img/headshot.jpeg}} & \large Thomas C Eskridge \\\\
+  & \large teskridge@fit.edu \\
+  & \large Harris Institute 311 \\
+  & \large (321) 674-7455 \\
+  & \vspace{20mm}\\
+\end{tabular}
+
+
+\subsection*{Brief History of the Candidate}
+
+Dr. Thomas C Eskridge is a tenured Associate Professor in the Department of Electrical Engineering and Computer Science at Florida Institute of Technology (Florida Tech).  He arrived at Florida Tech as a Research Associate Professor in the L3Harris Institute for Assured Information, where he was Technical Lead or Key Personnel on a variety of projects sponsored by the Office of Naval Research, the Air Force Research Laboratory, the Department of Defense, as well as with large and small private companies.  Dr. Eskridge transitioned from a Research Associate Professor to Associate Professor and currently maintains an active research and teaching schedule focusing on techniques and processes that amplify human performance through teamwork with artificial intelligence (AI) agents and other automation.  Prior to joining Florida Tech, he was a Research Scientist at the Florida Institute for Human and Machine Cognition (IHMC) in Pensacola, FL.  There, he studied how visualizations can increase safety critical operator performance in aircraft and high-performance vehicles and how they can clarify operator knowledge for elicitation and instruction.  
+
+Dr. Eskridge has been the principal investigator (PI) over \$300K of externally funded projects and has made contributions as Technical Lead (TL), Key Personnel (KP), or Contributor (C) on research projects totaling \$10,948,298.00.   He has published over 90 technical publications in scientific peer-reviewed conference proceedings such as \textit{ACM CHI Conference on Human Factors in Computing Systems}, \textit{International Conference on Case-based Reasoning}, \textit{International Conference on Applied Human Factors and Ergonomics}, and in peer-reviewed journals including \textit{New Space Journal}, \textit{IEEE Systems Journal}, \textit{EURASIP Journal on Information Security}, \textit{American Intelligence Journal}, \textit{IEEE Intelligent Systems}, \textit{Metaphor and Symbol}, and \textit{Journal of Information and Knowledge Management}. Before joining Florida Tech, Dr. Eskridge conducted research in Human-Centered Computing focusing on the development and commercial transfer of an aircraft instrumentation system that drastically reduced pilot instrument scan time and dramatically increased flying performance.  Dr. Eskridge is also an entrepreneur who founded a commercial visual inspection system company based on the similarity-based reasoning and learning system he developed as part of his Ph.D. dissertation.  This company, Intelligent Reasoning Systems, Inc., operated independently for ten years, with over 150 employees in offices around the world, including Taipei, Tokyo, London, and Frankfurt.  The combination of advanced research focused on practical applications throughout his career has resulted in 18 issued patents with Dr. Eskridge as inventor. 
+
+\subsection*{Teaching and Related Activities}
+\label{teaching}
+
+My teaching contributions have been made primarily at the graduate level and have resulted in the development of eleven courses (see Table ~\ref{newcourse}).  Four of these courses were created as a result of the redesign of the Human-Centered Design degree program, an effort that I led for the department.  The driving goal for all of my courses is to put the topic in a practical, applied context so that students can use their hands-on projects as a tool to understand the science.  I also place a high value on working individually with students to help them understand how to conduct work and research in the topic or to make progress their degree program.  This commitment is evidenced by the consistent development of independent study courses that customize course content to address the topics that students are most excited and motivated to learn (see Table~\ref{indep}).   It is also evidenced by my commitment to students in the Capstone (see Table ~\ref{capstone}) and the undergraduate Senior Design classes (see Table ~\ref{srdesign}).  It is my belief that providing some extra attention to student interests and needs can instill in them a deeper appreciation for the subject and a significantly greater understanding of how to conduct research or development projects in an effective and efficient manner.   I believe that students will be able to leverage this understanding to increase their chances of success in their transition to industry or in the furtherance of the academic careers.  Students have responded to this approach by judging my teaching with an average evaluation for the semesters from 2017-2023 of \textbf{4.57}.  A detailed course description is shown in Table ~\ref{details} and a summary of evaluation scores is shown in Table~\ref{tabeval}.
+
+\begin{table}
+\caption{New Course Developments}
+\label{newcourse}
+\center
+\begin{tabular}{| l | c | c | c | c | c | p{1.5in} |}
+Num & Title & Required & Rec & Notes \\ \hline
+HCD5210 & Introduction to Human-Centered Design & HCD & CSE/CYB & with GA Troy Weekes \\
+HCD6380 & Creative and Design Thinking & HCD & No & with GA Troy Weekes \\
+HCD5802 & Usability Engineering & HCD & No & \\
+HCD6701 & Research Methods & HCD & No & \\
+CSE5800 & Interacting with Large Language Models & No & CYB/CSE & \\
+CYB5800 & Information Visualization & No & CSE/HCD & \\
+CSE5800 & Deep Learning & No & CSE  & \\
+CSE5290 & Introduction to Artificial Intelligence & No & CSE & \\
+CSE5310 & Management and Processing of Big Data & No & CSE & \\
+CYB5800 & Network Security Reasoning & No & CSE & \\
+CYB5675 & Data Mining for Cybersecurity & No  & CSE/BISK & \\
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Detailed Course Descriptions}
+\label{details}
+\center
+\begin{tabular}{| l | c | c | c | c | c | c |}
+Semester & Title & Required & Rec & Enroll & Eval \\ \hline
+Fall 2023 & Data mining for cybersecurity & No & Bisk CYB  & 2 & n.a. \\
+Fall 2023 & Introduction to HCD & HCD & CYB/CSE  & 6 & n.a. \\
+Fall 2023 & Interacting with LLMs & No & CSE  & 6 & n.a. \\
+Spring 2023 & Usability & HCD & No  & 8 & 4.67 \\
+Spring 2023 & Information Visualization & No & CSE  & 10 & 5.00 \\
+Fall 2022 & Introduction to HCD & HCD & CYB/CSE  & 6 & 5.00 \\
+Summer 2022 & Data mining for cybersecurity & No & Bisk CYB  & 4 & -- \\
+Spring 2022 & Usability & HCD & No  & 8 & 5.00 \\
+Spring 2022 & Research Methods & HCD & No  & 8 & 5.00 \\
+Fall 2021 & Introduction to HCD & HCD & CYB/CSE  & 6 & 5.00 \\
+Fall 2021 & Data mining for cybersecurity & No & Bisk CYB  & 9 & -- \\
+Spring 2021 & Research Methods & HCD & No  & 8 & 5.00 \\
+Fall 2020 & Usability & HCD & No   & 7 & 5.00 \\
+Spring 2020 & Information Visualization & No & CSE  & 10 & 4.67 \\
+Fall 2019 & Introduction to HCD & HCD & CYB/CSE  & 8 & 4.50 \\
+Fall 2019 & Deep Learning & No & CSE & 12 & 4.67 \\ 
+Summer 2019 & Data mining for Cybersecurity & No & NG CYB  & 6 & 4.00 \\
+Fall 2018 & Artificial Intelligence & CSE & No  &  23 & 4.50 \\
+Spring 2019 & Information Visualization & No & CSE  & 10 & 4.60 \\
+Spring 2018 & Information Visualization & No & CSE  & 10 & 4.56 \\
+Fall 2017 & Processing and management of big data & No & CSE & 16 & 4.67 \\
+Spring 2017 & Information Visualization & No & CSE  & 10 & 5.00 \\
+Fall 2016 &  Data mining for Cybersecurity & No & CYB  & 7 & -- \\
+Spring 2016 & Network Security Reasoning & No & CYB & 8 & -- \\
+Fall 2014 & Data mining for Cybersecurity & No & CYB  & 3 & -- \\
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\caption{Average Teaching Evaluations 2017-2023} 
+\label{tabeval}
+\centering
+\includegraphics[width=\textwidth]{img/avgteachingevals.png}
+\end{table}
+
+\subsubsection*{Comments from Spring 2023 Information Visualization class}
+The following are the complete comments from the students submitting evaluations for the Spring 2023 Information Visualization class.
+
+\textit{9 - What did you find most valuable about this course and instructor?}
+{\fontfamily{cmss}\selectfont
+\begin{tablist}
+\item \tab{}I think the concept of understanding how visualization design effects each person uniquely the professor explained in great detail how to navigate these differences when presenting visualizations to end-users.
+\item \tab{}The instructor incorporated student questions into his lectures, from current AND past semesters. This is really useful, as these questions are common among students, so directly tackling those issues is very helpful in the understanding of these topics.
+\item \tab{}His style of teaching is very effective. He deals with students patiently and provides detailed feedback along with great potential directions.
+\item \tab{}The instructor is extremely passionate about the subject, enthusiastically presents it and provides unique assignments and grading criteria's to work with. The course itself is quite interesting and showcases data and how we perceive it with visuals
+\end{tablist}
+}
+\newpage
+\textit{10 - What constructive suggestions do you have for the improvement of this course or instructor?}
+{\fontfamily{cmss}\selectfont
+\begin{tablist}
+\item \tab{}Nothing Doctor Eskridge did an excellent job teaching this advanced topic.
+\item \tab{}Maybe we could have live poster-making (Visualization) exercises in class in the future. 
+\item \tab{}None
+\end{tablist}
+}
+\subsubsection*{Comments from Fall 2022 Introduction to HCD class}
+The following are the complete comments from the students submitting evaluations for the Fall 2022 Introduction to Human-Centered Design class.
+
+\textit{9 - What did you find most valuable about this course and instructor?}
+{\fontfamily{cmss}\selectfont
+\begin{tablist}
+\item \tab{}He is very jovial and makes the class interesting. I found the most valuable aspect of this course to be the instructor's jovial attitude. He makes the learning experience enjoyable and makes it more enjoyable to learn the material. He teaches the material in a way that not only helps me understand the material but also makes learning the material fun. He also assigns homework that is relevant to the material that is covered in the class, which helps to reinforce the concepts learned during the lectures. His teaching style is also very helpful as he uses real-world examples when explaining the concepts, which makes the material seem more relevant and easier to apply in real-life scenarios. Overall, I find his course extremely valuable as it gives me a much better understanding of the cybersecurity industry and how to be successful in this field.
+\item \tab{}The conversations between professor and students was very helpful in keeping the class engaging but more time is needed. 
+\item \tab{}AMAZING TEACHER
+\item \tab{}Talking about the course, This course helped me to gain enough knowledge about human centered design, Dr. Eskridge is a torch barrier. He has well designed the course and his explanation was awesome.
+\end{tablist}
+}
+\textit{10 - What constructive suggestions do you have for the improvement of this course or instructor?}
+{\fontfamily{cmss}\selectfont
+\begin{tablist}
+\item \tab{}Possible longer class
+\end{tablist}
+}
+\begin{table}\caption{Independent Study Courses Taught}
+\label{indep}
+\center
+\begin{tabular}{| l | c | c | c |}
+Semester & Student & Title & Evaluations \\ \hline
+Fall 2023 & Ruchir Gupta & Human-centered design of wearable technology &  n.a. \\
+Fall 2021 & Lauren McNair & Safety-critical systems & No \\
+Spring 2021 & Andrew Biron & Ideation, prototyping and additive manufacturing & No \\
+Spring 2021 & Elizabeth Reme & Human-automation teamwork & No \\
+Spring 2021 & Kazuhiko Momose & Safe and effective human spaceflight & No \\
+Fall 2020 & Maria Sagastume & Human-centered design of biomedical devices & No \\
+\end{tabular}
+\end{table}
+
+\begin{table}\caption{Capstone Courses Supervised}
+\label{capstone}
+\center
+\begin{tabular}{| l | c | p{2in} | c |}
+Semester & Student & Title & Major  \\ \hline
+Fall 2019 & Jonathan T. Checchi  & IoCSpector – Triage Automation for Indicators of Compromise & CYB \\
+Spring 2019 & Christopher Garner &  Identification of Malicious URL’s using Data Mining & CYB\\
+Fall 2018 & Robert Moore & Visualization of Network Status and Security Events & CYB \\
+Spring 2018 & Gregory Coulter & A review of network intrusion detection systems through visualization & CYB \\
+\end{tabular}
+\end{table}
+
+\begin{table}\caption{Senior Design Courses Supervised}
+\label{srdesign}
+\center
+\begin{tabular}{| l | p{2in} | c | p{2in} |}
+Semester & Topic & Enroll  & Results \\ \hline
+Fall 2023 & Ambient Artificial Intelligence  & 3 & \\
+Fall 2023 & Compositional Control of Autonomous Vehicles & 3 &  \\
+Spring 2021 & Image Snippets & 2 & commercial support, Worked with Google on Competition problem \\
+Spring 2021 & Real-time plume detection and mapping & 3 & commercial support \\
+Fall 2020 & Fly VR & 2 & \\
+Spring 2020 & The Music Assistant & 3 & \\
+Spring 2019 & Generating Enhanced Augmented Reality Surveillance (GEARS) & 4 & commercial support \\
+Fall 2018 & Enhanced Pilot Learning Interface System & 4 & assisted HCD PhD student \\
+Fall 2017 & Simple Segmentation of Small Networks & 4 & Best Computer Science Project \\
+\end{tabular}
+\end{table}
+
+%Provide a list of graduate students supervised. List separately Ph.D. and master’s students. Give names, dissertation/thesis titles, dates of study and current employment, if known. If any postdoctoral fellows have been supervised, list names. name of fellowship or source of support and dates. Provide a statement concerning participation on graduate student committees or include in the list above, but clearly identify whom you supervised (primary thesis/dissertation advisor) and for whom you were a committee member.
+
+%%%--------------------
+\newpage
+    \subsection*{Doctoral Advisor (graduates in bold)}
+
+    \begin{itemize}
+        \item \textbf{2022 Vijayanth Tummala, Advancing Human-Agent Teamwork, CS PhD, Assistant Professor, Embry-Riddle Aeronautical University, Daytona Beach, FL}
+        \item \textbf{2021 Troy Ricardo Weekes, Flow Choice Architecture: Cognitive Augmentation of Knowledge Workers, HCD PhD, Research Associate L3Harris Institute for Assured Information, Melbourne, FL}
+        \item \textit{Expected Spring 2024} Kazuhiko Momose, Compositional Human-Agent Teams, HCD PhD Candidate
+        \item Ali Mohammad K Almashykhi, CS PhD
+        \item Alita Regi, HCD PhD
+        \item Hisham Ghunaim, HCD PhD
+        \item Victor Kitmanyen, HCD PhD
+        \item Warren Harrell, HCD PhD
+        \item Waseem Samkari, CS PhD
+    \end{itemize}
+
+    \subsection*{Masters Advisor (graduates in bold)}
+
+    \begin{itemize}
+        \item \textbf{2022 Brad Thomas Costa, A Co-Evolutionary Approach to Test Case Generation for Safety-Critical Systems, CS MS, Directory of Engineering, Sentry View Systems, Melbourne, FL}
+        \item \textbf{2020 Kleanthis Zisis Tegos, Real-Time Action Classification using Intermediate Skeletal Pose Estimation, CS MS, Software Engineer, Microsoft, Miami, FL}
+        \item \textbf{2018 Daljeet Kaur Kaushal, Big Data Architectures for Deep Learning, CS MS, Software Associate, Goldman Sachs, Jersey City, New Jersey}
+        \item \textbf{2018 Tyler Culp, Infrastructure-based Access Policy Enforcement using Software-Defined Networks, CS MS, Software Engineer, Maxar Technologies, Melbourne FL}
+        \item Andrew Biron, TAC-IT: An Affective Computing Interface Design,  HCD MS
+        \item Bianca Ebanks, HCD MS
+        \item Lalith Nadipalli, HCD MS
+        \item Rahul Mehta, CS MS
+        \item Ruchir Gupta, HCD MS, Product Designer, Prototype Lab at Groundswell, Inc., Melbourne FL
+        \item Shvanand Gujjari, HCD MS
+        \item Srushti Nitin Ghadge, HCD MS
+        \item Uditkumar Ajitkumar Nair, HCD MS
+        
+
+    \end{itemize}
+
+    \subsection*{Committee Member}
+    \begin{itemize}
+    \item current Candice Chambers, CS PhD 
+    \item current Natalie N Shah, Virtual Teams as an analog (or proxy) model for evaluating ROI of human-AI team interactions, Business PhD
+    \item current Christopher Stricklan, Binary Diversity, Computer Science PhD
+    \item current Kendall A Carmody, The Effect of Level of Immersion on Learning in a Virtual Maintenance Training Task, AHF PhD
+    \item 2023 Eric Lawrence Demirjian, Artificial Intelligence Superteams \& Augmentation Strategies: Increasing Performance of High-Functioning Virtual Team Members Via Human Machine Teaming Enhancements, Business PhD
+    \item 2022 Kendall A Carmody, The Effect of Level of Immersion on Learning in a Virtual Maintenance Training Task, AHF MS External
+    \item 2021 Haoruo Fu, Assessment of the Skeletonization and Motion Monitoring System for the Security Efficiency of the United States Airports, Applied Aviation Safety MS
+    \item 2021 James Riswick-Estelle, Algorithms for Algorithms: Teaching Problem-Solving in Computer Science, ABA OBM MS External
+    \item 2020 Mary Catherine (Kay) Michel, A Bio-inspired Classification System for Cyber-Physical-Human Identity Resolution, CS PhD
+    \item 2019 Seyed Mohammad Mahdi Seyednezhad, A Network-Driven Approach for Characterizing Emoji Usage in Social Media, CS PhD
+    \item 2019 Sharon Sue Chinoy, Human-Centered Enterprise Resource Maintenance Management, HCD PhD
+    \item 2019 Milton Stafford, Applying Formal Methods for Integrating Advanced Algorithms in Safety Critical Systems, CS MS
+    \item 2018 Fitzroy Nembhard, A Recommender System for Improving Program Security Through Source Code Mining and Knowledge Extraction, CS PhD
+    \item 2018 Ondrej Doule, Adaptive Spaceship Cockpit Architecture, HCD PhD    
+    \item 2018 Timothy A Davis, Illegitimate Tasks and Employee Silence: A Moderated Mediation Model, IOP MS External
+    \item 2018 Dhanish Mehta, On the Automation of Cyber Experimentation, CS MS
+    \item 2018 Ed Mathews, Non-thesis, Meteorology MS
+    \item 2018 Caleb Ryberg, Non-thesis, Meteorology MS
+    \item 2017 Samir Mammadov, High Fidelity Adaptive Cyber Emulation, IACyber MS
+    \item 2016 Punica Bhardwaj, Soteria: A Persuasive eSecurity Assistant, IACyber MS
+    \item 2015 Evan Lawrence Stoner, A Foundation for Cyber Experimentation CS MS
+
+    \end{itemize}
+
+
+\subsubsection*{Teaching Role and Success}
+
+I view my role as a teacher as one of providing frameworks for students to learn.  To do this, I introduce the topic, then provide the scaffolding needed for students to understand the key elements of the topic and how those elements interact with others.  This replaces what would have been a list of facts with a way to understand those facts and apply them in practice.   My priority in class is to convey the material in a way that students can apprehend the power in the concepts and determine how they can be used and also improved.  I also stress in my classes that the projects that we undertake are not simply for a class grade, but can serve other purposes for them as well: the project might address a part of their thesis or dissertation, or address a key interest they have.  In all cases, I stress that the level of quality that is expected equivalent to what is expected in a conference publication and I also encourage them to work with me after the class has ended to publish the work.    This approach has resulted in several publications with students.\\
+
+I strive to learn new teaching techniques through blogs, the Chronicle of Higher Education, and books such as Lang's \textit{Small Teaching}.   Drawing from the human-centered design methodology, each class is a prototype where I experiment with different strategies of ordering, organizing, and presenting the material.    Each semester, I updated the examples used and evidence provided. 
+
+My strengths as a teacher are the enthusiasm that I bring to the course and attempt to convey to the students.  I run most of my classes as extended discussions and encourage students to participate with questions, anecdotes and extreme positions that are easy for students to disagree with.    I believe that students also have this view of my teaching, as evidenced by the student comments in previous section on teaching.
+
+My weaknesses as a teacher are mainly organizational.  I am very wiling to spend extra time during class to exploit a good discussion, but this can cause a shift in the syllabus that needs to be communicated and adjusted in the LMS.  Early in my teaching, I received negative feedback from some students on the time it took to grade assignments.  I've since made adjustments to the course schedule and my own weekly schedule to ensure that assignments are graded within the week. 
+
+%
+% The candidate should provide a statement summarizing his/her interpretation of his/her teaching role and success in teaching at Florida Tech. The statement should present a picture of yourself as a teacher describing, where appropriate, teaching practices in areas such as:
+% \begin{enumerate}
+% \item the setting and communicating of course goals;
+% \item overall course organization;
+% \item class preparation and methods used;
+% \item use of supplementary materials such as audiovisual aids, library, laboratory or field experiences;
+% \item grading your student work; and
+% \item your availability to students having difficulty with course materials or wishing further discussion of course topics.
+% \end{enumerate}
+
+% Where appropriate, comment on:
+
+% \begin{enumerate}
+% \item the method(s) you use to evaluate your teaching;
+% \item what you regard as your main strengths as a teacher;
+% \item what you regard as areas in which you need improvement as a teacher;
+% \item what you are doing to improve upon these goals;
+% \item course innovations or development; and
+% \item any other item(s) relating to teaching effectiveness
+% \item What evidence do you have that your students have the same picture of you?
+
+% \end{enumerate}
+
+\subsection*{Academic Advising}
+
+Dr. Eskridge  typically advises 15-20 undergraduate CS students per semester, approximately 19 MS students in HCD, CYB, and CS, and approximately 8 Ph.D. students from CS and HCD.
+
+\subsection*{Research and Scholarly Activities}
+% The term "research" is used in its broad sense of intellectual inquiry. Essentially, the term "research" is used interchangeably with the term "scholarly activities."
+
+% Review briefly the highlights of your research contributions. Emphasize specific contributions to knowledge, but do not become overly technical.
+
+My research is focused on how people interact with technology to improve their performance broadly scoped.  For some applications, improved performance means faster reaction times.  For other applications, improved performance means less stress and more time in a flow state.   Performance improvement happens in three ways:  moving from cognition to perception (creating visualizations that make selecting the right action effortless), enhancing cognition (creating agents that work as teammates and provide decision support), and responding to operator state (having automation measure the cognitive and emotional state of the operator and responding accordingly). 
+
+% Review your current and future research plans.
+
+My near-term research plans include:
+
+\begin{enumerate}
+\item Extending our work with human-agent teams to additional domains and to complete the development of trust models for different types of teams. 
+\item Extending our work in human-agent teams from cybersecurity to include space, industry, and health-care.
+\item Developing reasoning technologies that will assist operators in their tasks
+\end{enumerate}
+
+% Review your research support history and future plans.
+
+%------ Research 
+%List in reverse chronological order externally funded grants and contracts. Include for each the sponsoring agency or company, dates and period of support, number of students supported and amounts funded. Give a separate or contiguous list of projects internally funded or unfunded.
+
+Dr. Eskridge has been the principal investigator (PI) on approximately \$300K of external funding at Florida Tech.  He participated in several projects as Technical Lead amounting to \$2,368,830 in the last three years. He has also played a substantial role supporting a number of other projects at the L3Harris Institute for Assured Information as Key Personnel (KP) or Collaborator (C).  The list of projects is shown in  Table ~\ref{funding}.  
+
+I believe that collaboration is key to having a vibrant research organization. I have always been willing to participate on projects with other PIs if the work in those projects further my own research goals and permit me to direct graduate student involvement.  Similarly, I am also happy to serve as Co-PI with junior faculty to assist them in their research goals.  My commitment to collaboration is not just within the institute or department, but extends to other Colleges in the university, evidenced by my partnership with the Bisk College of Business on TETRA. 
+
+
+\begin{table}[ht!]
+  \caption{Externally Funded or Pending Contracts (submitted proposals in italics)}
+  \label{funding}
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+        Agency & Role & Amount & Title & GS & Duration \\ \hline
+        \textit{DARPA*} & \textit{PI} & \textit{\$849,289} & \textit{CISOC} & \textit{4} & \textit{1/24-1/26} \\
+        DOTE & KP & \$160,000 & TETRA & 1 &9/23-2/24 \\
+        UCLA & PI & \$5,740.00 & Diverse Intelligences  & 1 & 1/22-10/22 \\ 
+        FAA & PI & \$160,000.00 & Human Input Systems for CST  & 3 & 6/21-8/22 \\ 
+        AFRL/BBN & PI & \$134,878.00 & LEAP & 0 & 6/21-9/22 \\ 
+        AFRL/BBN & TL & \$300,000.00 & LWAP-BART & 3 & 7/20-7/22 \\ 
+        AFRL/BBN & TL & \$150,000.00 & WAND  & 2 &  5/19-5/20 \\ 
+        DHS    & TL     & \$1,618,212.00 & FDCE   & 3  & 9/18 - 9/21 \\ 
+        AFRL/BBN & C     & \$212,500.00 & DICE & 1 &8/17-7/19 \\ 
+        DoD    & TL     & \$485,841.00 & MTO & 2 & 11/17-11/18 \\ 
+        DHS    & KP     & \$1,285,246.00 & FC2  & 4 &  7/14-12/18 \\ 
+        AFRL   & TL     & \$1,000,000.00 & SAWD-2 &3 & 1/17-9/18 \\ 
+        AFRL   & KP     & \$1,311,881.00 & SAWD-1 & 3 & 3/15-1/17 \\ 
+        AFRL/BBN & KP     & \$870,000.00 & CHOPD & 1 &  3/15-9/18 \\ 
+        AFRL/BBN & TL     & \$399,000.00 & BART & 2 & 4/16-11/18 \\ 
+        AFRL/BBN & TL     & \$150,000.00 & InDEED & 3  &4/16-4/18 \\ 
+        DHS/IAI & C     & \$522,000.00 & SDNA & 2 & 9/16-9/18 \\ 
+        Securboration & C     & \$150,000.00 & JCAUSE & 0&  1/17-1/19 \\ 
+        AFRL   & KP     & \$1,933,000.00 & SBC2  & 3 & 2/13-11/16 \\ 
+        Rockwell Collins&KP  &\$100,000.00& APM & 1 & 3/14-9/15\\ \hline
+As PI & & 		\$300,618.00 & \\
+As PI/TL last 3 years & & 		\$2,368,830.00 & \\
+As PI/TL & & \$6,336,671.00 & \\
+Total involvement  &&		\$10,948,298.00 & \\ \hline
+    \end{tabular}
+\end{table}
+
+%----
+\subsection*{Research and Scholarly Activities}
+
+A full list of publications can be found in the publications section of the Resume.  Table~\ref{tab:pubs} shows the number of publications of each type over my career, and my h-index and number of citations.  It is typical for researchers in computer science to focus on conference publications because the field is changing so quickly.  Table~\ref{confh5} shows the h5-index and h5-median scores of a number of the conferences I have published in.  These values reflect the five year average h-index for the conference.  Where additional ranking data was available, I have added that, too.  The h5-index and h5-median for journals I have published in are shown in Table~\ref{journalh5}.  This table also includes the impact factor for each journal. 
+
+Recently, one of our papers was awarded ``Applied Human Factors And Ergonomics 2023 and its Affiliated Conferences AHFE 2023 \textbf{Best Paper Award for Human Factors in Transportation (AVI)}''
+% List publications and contributions. List these publications in the following order or in chronological order indicating in the margin the appropriate category. Copies of some or all publications should be included in "Supporting Documentation for Research and Related Activities" (Appendix AIII). If too bulky, part or all of this section may be separated from the main dossier.
+
+% \begin{enumerate}
+% \item Books and monographs
+% \item Articles in refereed journals and books
+% \item Articles in non-refereed journals or books
+% \item Articles in refereed journals or books in press
+% \item Articles in non-refereed journals or books in press
+% \item Articles in refereed journals or books submitted
+% \item Articles in non-refereed journals or books submitted
+% \item Conference presentations and whether the entire paper and/or the abstract only was reviewed.
+% \item Published technical reports.
+% \item Other publications such as course manuals, guidebooks, etc.
+% \item List and describe briefly any disclosures of inventions or resulting patents.
+% \end{enumerate}
+
+
+\begin{table}[]
+\caption{Publication Count and Citations
+}
+\label{tab:pubs}
+\center
+\begin{tabular}{llcl}
+\hline
+\multicolumn{1}{|l|}{\multirow{2}{*}{Publication Type}} & \multicolumn{1}{c|}{\multirow{2}{*}{Count}} & \multicolumn{2}{c|}{google Scholar}                                                 \\ \cline{3-4} 
+\multicolumn{1}{|l|}{}                                  & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{h-index}             & \multicolumn{1}{l|}{i-index}             \\ \hline
+\multicolumn{1}{|l|}{Conference Proceedings}            & \multicolumn{1}{l|}{74}                     & \multicolumn{1}{c|}{\multirow{5}{*}{19}} & \multicolumn{1}{l|}{\multirow{5}{*}{28}} \\ \cline{1-2}
+\multicolumn{1}{|l|}{Journal}                           & \multicolumn{1}{l|}{11}                     & \multicolumn{1}{c|}{}                    & \multicolumn{1}{l|}{}                    \\ \cline{1-2}
+\multicolumn{1}{|l|}{Book Chapter}                      & \multicolumn{1}{l|}{5}                      & \multicolumn{1}{c|}{}                    & \multicolumn{1}{l|}{}                    \\ \cline{1-2}
+\multicolumn{1}{|l|}{Edited Book}                       & \multicolumn{1}{l|}{1}                      & \multicolumn{1}{c|}{}                    & \multicolumn{1}{l|}{}                    \\ \cline{1-2}
+\multicolumn{1}{|l|}{Patents}                           & \multicolumn{1}{l|}{14}                     & \multicolumn{1}{c|}{}                    & \multicolumn{1}{l|}{}                    \\ \hline
+\multicolumn{1}{r}{Total Publications}                  & 104                                         & \multicolumn{1}{l}{}                     &                                          \\
+\multicolumn{1}{r}{Total Citations}                     & 2354                                        & \multicolumn{1}{l}{}                     &                                         
+\end{tabular}
+\end{table}
+
+% Provide a brief statement regarding the impact of these publications in the field of research. A recommended indicator of scholarly impact would be a review of the candidate’s publications citation rate. Include a statement of the ranking of these journals in the candidate’s research field.
+
+\begin{table}
+\caption{Conference Ranking by h5-index}
+\label{confh5}
+\center
+\begin{tabular}{|p{3in}|c|c|c|c|}
+Pub & h5-index & h5-median & Rank  & Google Scholar \\ \hline
+Computer Human Interaction (CHI)& 122 & 174  & top 7.46\% of 804 & \#1 in HCI\\ 
+HCI International& 38 & 55 & & \#18 in HCI\\
+IEEE Symposium Series on Computational Intelligence& 29 & 49 &  & \\
+IEEE International Symposium on Robot and Human Interactive Communication & 28 & 31 & & \\
+International Conference on Applied Human Factors and Ergonomics & 23 & 28 &  & \\
+International Conference on Agents and Artificial Intelligence (ICAART)& 20 & 31 & 31.73\% of 750 & \\
+Proceedings IEEE SoutheastCon & 20 & 26 & & \\
+IEEE International Symposium on Parallel and Distributed Processing with Applications & 19 & 26 & & \\
+International Midwest Symposium on Circuits and Systems (MWSCAS) & 18 & 23 & & \\
+NASA Formal Methods & 16 & 25 & & \\
+Case-Based Reasoning and Development (ICCBR)& 15& 18 & top 27.48\% of 1492 & \\
+IEEE International Conference on Human-Machine Systems& 11& 14 & & \\
+International Syposium on Methodologies for Intelligent Systems (ISMIS) & 9 & 15 & & \\
+\end{tabular}
+\end{table}
+
+
+\begin{table}
+\caption{Journal Ranking by h5-index}
+\label{journalh5}
+\center
+\begin{tabular}{|p{4in}|c|c|c|c|}
+Pub & h5-index & h5-median  & IF\\ \hline
+  IEEE Systems Journal& 77 & 106 & 4.4  \\
+Journal of Experimental \& Theoretical Artificial Intelligence & 29 & 41 & 2.2  \\
+Analog Integrated Circuits and Signal Processing & 27 & 34  & 1.77 \\
+KI-Künstliche Intelligenz & 26 & 37  & 2.88 \\
+Metaphor and Symbol& 19 & 23  & 1.38 \\
+Journal of Information and Knowledge Management (JIKM)& 3 & 6  & 1.2 \\
+American Intelligence Journal& 3 & 4  & -- \\
+\end{tabular}
+\end{table}
+
+  
+
+% List invited lectures of special note during the last three years.
+\subsection*{Invited Talks and Patents}
+
+To avoid repetition, these sections are shown in the résumé.  
+
+  % \nocite{*}
+  %   \begin{refcontext}[sorting=ydnt]{}
+  %   \printbibliography[keyword={INVITED}, title={Invited Talks},env=myPublicationListYearStyle, type=book]
+  %   \printbibliography[keyword={INVITED-LOCAL}, title={Campus Talks},env=myPublicationListYearStyle, type=book]
+  %   \printbibliography[title={Patents},env=myPublicationListYearStyle, type=misc]    \end{refcontext}
+
+
+% The candidate should provide a brief statement on his/her interpretation of the role and success of his/her scholarly activities and discuss plans for future creative work and research. Comment on how you have developed yourself professionally in your discipline since your last promotion/appointment to Florida Tech.
+
+\newpage
+\subsection*{Service Activities}
+To avoid repetition, these sections are shown in the résumé.
+
+\subsection*{Documentation of Professional Practice Activities}
+%This section should be used for candidates to report professional activities that do not fit conveniently under the above headings. Such activities might include consulting, professional clinical practice, short-course development, etc.
+
+%List organizations, approximate level of effort and period of consulting. To the extent propriety permits, describe the consulting effort and the work product(s); e.g., reports, drawings, software, new test procedures, \documentclass{article}
+%List short-course offerings by title, date, duration, location and approximate attendees. Describe your role as course developer and/or presenter.
+I have consulted with three different companies since I came to Florida Tech.   A six month contract with Modus Operandi of Melbourne, FL supported an SBIR contract they had to develop cyber operator visualizations for their workflow.  I conducted a cognitive task analysis for the project to ensure the design of the visualization would meet the needs of the operator.  Sentry View Systems contracted me for two months to assist them with a project to test a lightweight, mobile ground system for detecting small UAVs.  I wrote flightpath creation software that allowed them to simulate drone paths using hardware-in-the-loop testing.  
+
+I have a continuing relationship with HyLighter, LLC of Tallahassee, FL.  My work there has focused on product and market development for HyLighter's eponymous product.   This includes feature testing, prototyping, and experimentation.  
+
+\vspace{1in}
+
+\subsection*{Résumé} \newpage
+%The résumé should be current and detailed. If the résumé provides the information requested in the above sections, that section can reference the résumé. For example, it is not necessary to list publications in "Research and Scholarly Activities" (Section III) if the data requested is clearly given in the résumé. 
+
+
+\newpage
+\newpage
     % display your name as the document title
     \namefont{\myname}
 
@@ -108,7 +608,7 @@
         \flushright{}
         \href{mailto:teskridge@fit.edu}{teskridge@fit.edu} \\
         +1 321 674 7455 \\
-        \href{https://thomaseskridge.com}{thomaseskridge.com}
+        \href{https://thomaseskridge.com}{https://thomaseskridge.com}
     \end{minipage}
 
 
@@ -116,11 +616,11 @@
 
     \begin{tablist}
 
-        \item[Ph.D.] \tab{}Philosophy, Binghamton University, 2012 \\
+        \item[Ph.D.] \tab{}Philosophy: Philosophy, Computers, and Cognitive Science \\Binghamton University, 2012. \\
                             Dissertation: Continuous Flow Analogical Reasoning
-        \item[M.S.]  \tab{}Computer Science, Southern Illinois University, Carbondale,  1987 \\
-			 Thesis: Analogical Problem Solving,
-        \item[B.S.]  \tab{}Computer Science, Southern Illinois University, Carbondale,  1986.
+        \item[M.S.]  \tab{}Computer Science \\Southern Illinois University, Carbondale,  1987. \\
+			 Thesis: Analogical Problem Solving
+        \item[B.S.]  \tab{}Computer Science \\Southern Illinois University, Carbondale,  1986.
 
 
     \end{tablist}
@@ -132,10 +632,11 @@
     \begin{tablist}
 
         \item[2015--]   \tab{}Florida Institute of Technology \\
-                              Associate Professor, Department of Computer Science and Human-Centered Design
+                              Associate Professor, Department of Computer Science and Human-Centered Design and\\
+                              L3Harris Institute for Assured Information
 
-        \item[2013--15]   \tab{}Florida Institute of Technology \\
-                              Research Professor, Department of Computer Science and Human-Centered Design
+        \item[2014--15]   \tab{}Florida Institute of Technology \\
+                              Research Associate Professor, L3Harris Institute for Assured Information
                               
     \end{tablist}
 
@@ -144,19 +645,19 @@
     \begin{tablist}
 
         \item[2012--15]   \tab{}Institute for Human and Machine Cognition\\
-                              Research Scientist, Human-centered visualization
+                              Research Scientist, Human-centered computing and visualization
 
         \item[2001--12]   \tab{}Institute for Human and Machine Cognition\\
-                              Research Associate, Human-centered visualization
+                              Research Associate, Human-centered computing and visualization
                               
         \item[1992--01]\tab{}Intelligent Reasoning Systems, Inc.\\
-                              Founder, Chief Scientist
+                              Founder, Chief Scientist, Automated Visual Inspection
  
          \item[1990--92]\tab{}Computing Research Laboratory, New Mexico State University\\
-                              Computing Specialist II
+                              Computing Specialist II, Model-based Reasoning
                               
         \item[1989--90]\tab{}Lockheed Missiles and Space Corporation\\
-                              Senior Scientific Programmer
+                              Senior Scientific Programmer, Spatial Computing and Organizational Movement
     \end{tablist}
 
     \section*{Research Areas}
@@ -171,584 +672,150 @@
 
 
 
-    \section*{Publications}
-
-    \subsection*{Journal Articles}
-
-    \begin{tablist}
-
-        \item[2021] \tab{}Boeing, G. \enquote{Street Network Models and Indicators for Every Urban Area in the World.} \textit{Geographical Analysis}, published online ahead of print. \href{https://doi.org/10.1111/gean.12281}{doi:10.1111/gean.12281}
-
-        \item[2021] \tab{}Boeing, G. \enquote{Off the Grid\ldots\ and Back Again? The Recent Evolution of American Street Network Planning and Design.} \textit{Journal of the American Planning Association} 87 (1), 123--137. \href{https://doi.org/10.1080/01944363.2020.1819382}{doi:10.1080/01944363.2020.1819382}
-
-        \item[2021] \tab{}Boeing, G., M. Besbris, A. Schachter, and J. Kuk. \enquote{Housing Search in the Age of Big Data: Smarter Cities or the Same Old Blind Spots?} \textit{Housing Policy Debate} 31 (1), 112--126. \href{https://doi.org/10.1080/10511482.2019.1684336}{doi:10.1080/10511482.2019.1684336}
-
-        \item[2021] \tab{}Boeing, G. \enquote{Spatial Information and the Legibility of Urban Form: Big Data in Urban Morphology.} \textit{International Journal of Information Management} 56, 102013. \href{https://doi.org/10.1016/j.ijinfomgt.2019.09.009}{doi:10.1016/j.ijinfomgt.2019.09.009}
-
-        \item[2021] \tab{}Boeing, G., M. Besbris, D. Wachsmuth, and J. Wegmann. \enquote{Tilted Platforms: Rental Housing Technology and the Rise of Urban Big Data Oligopolies.} \textit{Urban Transformations} 3, 6. \href{https://doi.org/10.1186/s42854-021-00024-2}{doi:10.1186/s42854-021-00024-2}
-
-        \item[2021] \tab{}Liu, S., C. Higgs, J. Arundel, G. Boeing, N. Cerdera, D. Moctezuma, E. Cerin, D. Adlakha, M. Lowe, and B. Giles-Corti. \enquote{A Generalized Framework for Measuring Pedestrian Accessibility around the World Using Open Data.} \textit{Geographical Analysis}, published online ahead of print. \href{https://doi.org/10.1111/gean.12290}{doi:10.1111/gean.12290}
-
-        \item[2020] \tab{}Boeing, G., J. Wegmann, and J. Jiao. \enquote{Rental Housing Spot Markets: How Online Information Exchanges Can Supplement Transacted-Rents Data.} \textit{Journal of Planning Education and Research}, published online ahead of print. \href{https://doi.org/10.1177/0739456X20904435}{doi:10.1177/0739456X20904435}
-
-        \item[2020] \tab{}Boeing, G. \enquote{Online Rental Housing Market Representation and the Digital Reproduction of Urban Inequality.} \textit{Environment and Planning A:\ Economy and Space} 52 (2), 449--468. \href{https://doi.org/10.1177/0308518X19869678}{doi:10.1177/0308518X19869678}
-
-        \item[2020] \tab{}Boeing, G. \enquote{Planarity and Street Network Representation in Urban Form Analysis.} \textit{Environment and Planning B:\ Urban Analytics and City Science} 47 (5), 855--869. \href{https://doi.org/10.1177/2399808318802941}{doi:10.1177/2399808318802941}
-
-        \item[2020] \tab{}Boeing, G. \enquote{The Right Tools for the Job: The Case for Spatial Science Tool-Building.} \textit{Transactions in GIS} 24 (5), 1299--1314. \href{https://doi.org/10.1111/tgis.12678}{doi:10.1111/tgis.12678}
-
-        \item[2020] \tab{}Boeing, G. \enquote{A Multi-Scale Analysis of 27,000 Urban Street Networks: Every US City, Town, Urbanized Area, and Zillow Neighborhood.} \textit{Environment and Planning B:\ Urban Analytics and City Science} 47 (4), 590--608. \href{https://doi.org/10.1177/2399808318784595}{doi:10.1177/2399808318784595}
-
-        \item[2020] \tab{}Boeing, G. \enquote{Urban Street Network Analysis in a Computational Notebook.} \textit{Region: Journal of the European Regional Science Association} 6 (3), 39--51. \href{https://doi.org/10.18335/region.v6i3.278}{doi:10.18335/region.v6i3.278}
-
-        \item[2019] \tab{}Kang, W., T. Oshan, L.~J. Wolf, G. Boeing, V. Frias-Martinez, S. Gao, A. Poorthuis, and W. Xu. \enquote{A Roundtable Discussion: Defining Urban Data Science.} \textit{Environment and Planning B:\ Urban Analytics and City Science} 46 (9), 1756--1768. \href{https://doi.org/10.1177/2399808319882826}{doi:10.1177/2399808319882826}
-
-        \item[2019] \tab{}Boeing, G. \enquote{Urban Spatial Order: Street Network Orientation, Configuration, and Entropy.} \textit{Applied Network Science} 4 (1), 67. \href{https://doi.org/10.1007/s41109-019-0189-1}{doi:10.1007/s41109-019-0189-1}
-
-        \item[2019] \tab{}Boeing, G. \enquote{Street Network Models and Measures for Every US City, County, Urbanized Area, Census Tract, and Zillow-Defined Neighborhood.} \textit{Urban Science} 3 (1), 28. \href{https://doi.org/10.3390/urbansci3010028}{doi:10.3390/urbansci3010028}
-
-        \item[2019] \tab{}Padgham, M., G. Boeing, D. Cooley, N. Tierney, M. Sumner, T. Phan, and R. Beare. \enquote{An Introduction to Software Tools, Data, and Services for Geospatial Analysis of Stroke Services.} \textit{Frontiers in Neurology} 10, 743. \href{https://doi.org/10.3389/fneur.2019.00743}{doi:10.3389/fneur.2019.00743}
-
-        \item[2018] \tab{}Boeing, G. \enquote{Measuring the Complexity of Urban Form and Design.} \textit{Urban Design International} 23 (4), 281--292. \href{https://doi.org/10.1057/s41289-018-0072-1}{doi:10.1057/s41289-018-0072-1}
-
-        \item[2018] \tab{}Boeing, G. \enquote{Estimating Local Daytime Population Density from Census and Payroll Data.} \textit{Regional Studies, Regional Science} 5 (1), 179--182. \href{https://doi.org/10.1080/21681376.2018.1455535}{doi:10.1080/21681376.2018.1455535}
-
-        \item[2018] \tab{}Boeing, G. \enquote{The Effects of Inequality, Density, and Heterogeneous Residential Preferences on Urban Displacement and Metropolitan Structure: An Agent-Based Model.} \textit{Urban Science} 2 (3), 76. \href{https://doi.org/10.3390/urbansci2030076}{doi:10.3390/urbansci2030076}
-
-        \item[2018] \tab{}Boeing, G. \enquote{Pynamical: Model and Visualize Discrete Nonlinear Dynamical Systems, Chaos, and Fractals.} \textit{Journal of Open Source Education} 1 (1), 15. \href{https://doi.org/10.21105/jose.00015}{doi:10.21105/jose.00015}
-
-        \item[2017] \tab{}Boeing, G. \enquote{OSMnx: New Methods for Acquiring, Constructing, Analyzing, and Visualizing Complex Street Networks.} \textit{Computers, Environment and Urban Systems} 65, 126--139. \href{https://doi.org/10.1016/j.compenvurbsys.2017.05.004}{doi:10.1016/j.compenvurbsys.2017.05.004}
-
-        \item[2017] \tab{}Boeing, G. and P. Waddell. \enquote{New Insights into Rental Housing Markets across the United States: Web Scraping and Analyzing Craigslist Rental Listings.} \textit{Journal of Planning Education and Research} 37 (4), 457--476. \href{https://doi.org/10.1177/0739456X16664789}{doi:10.1177/0739456X16664789}
-
-        \item[2017] \tab{}Boeing, G. \enquote{OSMnx: A Python Package to Work with Graph-Theoretic OpenStreetMap Street Networks.} \textit{Journal of Open Source Software} 2 (12), 1. \href{https://doi.org/10.21105/joss.00215}{doi:10.21105/joss.00215}
-
-        \item[2016] \tab{}Boeing, G. \enquote{Honolulu Rail Transit: International Lessons from Barcelona in Linking Urban Form, Design, and Transportation.} \textit{Planext} 2, 28--47. \href{https://doi.org/10.17418/planext.2016.3vol.02}{doi:10.17418/planext.2016.3vol.02}
-
-        \item[2016] \tab{}Boeing, G. \enquote{Visual Analysis of Nonlinear Dynamical Systems: Chaos, Fractals, Self-Similarity, and the Limits of Prediction.} \textit{Systems} 4 (4), 37. \href{https://doi.org/10.3390/systems4040037}{doi:10.3390/systems4040037}
-
-        \item[2014] \tab{}Boeing, G., D. Church, H. Hubbard, J. Mickens, and L. Rudis. \enquote{LEED-ND and Livability Revisited.} \textit{Berkeley Planning Journal} 27 (1), 31--55. \href{https://doi.org/10.5070/BP327124500}{doi:10.5070/BP327124500}
-
-    \end{tablist}
-
-
-
-    \subsection*{Book Chapters}
-
-    \begin{tablist}
-
-        \item[2022] \tab{}Boeing, G., M. Batty, S. Jiang, and L. Schweitzer. \enquote{Urban Analytics: History, Trajectory, and Critique.} In: \textit{Handbook of Spatial Analysis in the Social Sciences}, edited by S. Rey and R. Franklin. Cheltenham, England:\ Edward Elgar. In press.
-
-        \item[2021] \tab{}Boeing, G. and D. Arribas-Bel. \enquote{GIS and Computational Notebooks.} In: \textit{The Geographic Information Science \& Technology Body of Knowledge}, edited by J.~P. Wilson. Ithaca, NY:\ University Consortium for Geographic Information Science. \href{https://doi.org/10.22224/gistbok/2021.1.2}{doi:10.22224/gistbok/2021.1.2}
-
-        \item[2021] \tab{}Boeing, G. \enquote{Exploring Urban Form Through OpenStreetMap Data: A Visual Introduction.} In: \textit{Urban Experience and Design: Contemporary Perspectives on Improving the Public Realm} (pp. 167--184), edited by J.~B. Hollander and A. Sussman. New York, NY:\ Routledge. \href{https://doi.org/10.4324/9780367435585-15}{doi:10.4324/9780367435585-15}
-
-        \item[2019] \tab{}Boeing, G. \enquote{The Morphology and Circuity of Walkable and Drivable Street Networks.} In: \textit{The Mathematics of Urban Morphology} (pp. 271--287), edited by L. D'Acci. Basel, Switzerland: Birkh{\"a}user. \href{https://doi.org/10.1007/978-3-030-12381-9_12}{doi:10.1007/978-3-030-12381-9\_12}
-
-        \item[2017] \tab{}Barajas, J.~M., G. Boeing, and J. Wartell. \enquote{Neighborhood Change, One Pint at a Time: The Impact of Local Characteristics on Craft Breweries.} In: \textit{Untapped: Exploring the Cultural Dimensions of Craft Beer} (pp. 155--176), edited by N.~G. Chapman, J.~S. Lellock, and C.~D. Lippard. Morgantown, WV:\ West Virginia University Press. \href{https://doi.org/10.31235/osf.io/v88hh}{doi:10.31235/osf.io/v88hh}
-
-    \end{tablist}
-
-
-
-    \subsection*{Conference Proceedings}
-
-    \begin{tablist}
-
-        \item[2019] \tab{}Boeing, G. \enquote{Street Network Patterns, Orientation, and Entropy around the World.} \textit{Compendium of the Transportation Research Board 98\textsuperscript{th} Annual Meeting}. Washington, DC:\ Transportation Research Board. \href{https://trid.trb.org/view/1573315}{https://trid.trb.org/view/1573315}
-
-        \item[2018] \tab{}Abdelkader, A., G. Boeing, B.~T. Fasy, and D.~L. Millman. Topological Distance between Nonplanar Transportation Networks. \textit{Proceedings of the 28\textsuperscript{th} Fall Workshop on Computational Geometry}. New York, NY:\ City University of New York. \href{https://bit.ly/3lHhqAD}{https://bit.ly/3lHhqAD}
-
-        \item[2018] \tab{}Boeing, G. \enquote{The Relative Circuity of Walkable and Drivable Urban Street Networks.} \textit{Compendium of the Transportation Research Board 97\textsuperscript{th} Annual Meeting}. Washington, DC:\ Transportation Research Board. \href{https://trid.trb.org/view/1495502}{https://trid.trb.org/view/1495502}
-
-    \end{tablist}
-
-
-
-    \subsection*{Edited Articles and Reviews}
-
-    \begin{tablist}
-
-        \item[2018] \tab{}Boeing, G. \enquote{Automated Street Network Analysis for Urban Planners with OSMnx.} \textit{Planning and Technology Today} 117 (Spring), 10--11. \href{https://doi.org/10.31235/osf.io/mkbp3}{doi:10.31235/osf.io/mkbp3}
-
-        \item[2017] \tab{}Boeing, G. \enquote{A Review of the Structure and Dynamics of Cities: Urban Data Analysis and Theoretical Modeling.} \textit{Journal of the American Planning Association} 83 (4), 418. \href{https://doi.org/10.1080/01944363.2017.1362306}{doi:10.1080/01944363.2017.1362306}
-
-        \item[2017] \tab{}Boeing, G. \enquote{Understanding Cities through Networks and Flows.} \textit{Berkeley Planning Journal} 28 (1), 118--123. \href{https://doi.org/10.5070/BP328133862}{doi:10.5070/BP328133862}
-
-        \item[2016] \tab{}Boeing, G. \enquote{How Our Neighborhoods Lost Food, and How They Can Get It Back.} \textit{Progressive Planning} 206 (Winter), 35--37. \href{https://doi.org/10.31235/osf.io/a5e2q}{doi:10.31235/osf.io/a5e2q}
-
-    \end{tablist}
-
-
-
-    \subsection*{Reports and Other Publications}
-
-    \begin{tablist}
-
-        \item[2021] \tab{}Boeing, G., Y. Lu, C. Pilgram, and P. Mannino. \enquote{Race, Class, and the Production of and Exposure to Vehicular Pollution in Los Angeles.} US Department of Transportation, Pacific Southwest Region UTC.\@ Technical report. \href{https://bit.ly/31RQjgM}{https://bit.ly/31RQjgM}
-
-        \item[2020] \tab{}Boeing, G. \enquote{How Much Does It Cost to Rent an Apartment, Anyway?} Planetizen's Journal of Planning Education and Research Blog Series. Mar 10. \href{https://bit.ly/37SU4lf}{https://bit.ly/37SU4lf}
-
-        \item[2018] \tab{}Waddell, P., G. Boeing, M. Gardner, and E. Porter. \enquote{An Integrated Pipeline Architecture for Modeling Urban Land Use, Travel Demand, and Traffic Assignment.} US Department of Energy SMART Mobility Urban Science Pillar: Coupling Land Use Models and Network Flow Models. Technical report. \href{https://doi.org/10.31235/osf.io/74zaw}{doi:10.31235/osf.io/74zaw}
-
-        \item[2017] \tab{}Boeing, G. \enquote{Making Street Network Analysis Easy for Planners with OpenStreetMap.} Association of Collegiate Schools of Planning Blog Series. Apr 11. \href{https://bit.ly/3n5ac9K}{https://bit.ly/3n5ac9K}
-
-    \end{tablist}
-
-
-
-    \subsection*{Patents}
-
-    \begin{tablist}
-
-        \item[2014] \tab{}Beck, A.~E., G. Boeing, and D. Shannon. \textit{Systems and Methods for Analyzing Requirements}. United States patent US8650186B2, European patent EP2413256, Australian patent AU2011204935, Canadian patent CA2747481, Chinese patent CN102346763.
-
-
-    \end{tablist}
-
-
-
-    \subsection*{Manuscripts under Review}
-
-    \begin{tablist}
-
-    \item[\the\year] \tab{}Boeing, G. and W. Riggs. \enquote{Converting One-Way Streets to Two-Way Streets to Improve Transportation Network Efficiency and Reduce Vehicle Distance Traveled.} Under review.
-
-    \item[\the\year] \tab{}Boeing, G., Y. Lu, and C. Pilgram. \enquote{Local Inequities in the Relative Production of and Exposure to Vehicular Air Pollution in Los Angeles.} Under review.
-
-    \item[\the\year] \tab{}Boeing, G., C. Higgs, S. Liu, B. Giles-Corti, J.~F. Sallis, E. Cerin, M. Lowe, D. Adlakha, E. Hinckson, A.~V. Moudon, D. Salvo, M.~A. Adams, L.~V. Barrozo, T. Bozovic, G.~V. Callejo, X. Delclòs-Alió, J. Dygrýn, S. Ferguson, K. Gebel, T.~P. Ho, P. Lai, J.~C. Martori, K. Nitvimol, A. Queralt, J.~D. Roberts, G.~H. Sambo, J. Schipperijn, D. Vale, V. Van de Weghe, and J. Arundel. \enquote{Using Open Data and Open-Source Software to Develop Spatial Indicators of Urban Design and Transport Features for Achieving Healthy and Sustainable Cities.} Under review.
-
-    \item[\the\year] \tab{}B. Giles-Corti, A.~V. Moudon, M. Lowe, D. Adlakha, E. Cerin, G. Boeing, C. Higgs, J. Arundel, S. Liu, E. Hinkson, D. Salvo, M.~A. Adams, H. Badland, A.~A. Florindo, K. Gebel, R.~F. Hunter, J. Mitáš, A.~L. Oyeyemi, A. Puig-Ribera, A. Queralt, M.~P. Santos, J. Schipperijn, M. Stevenson, D. Van Dyck, G.~V. Callejo, and J.~F. Sallis. \enquote{Creating Healthy and Sustainable Cities: What Gets Measured Gets Done.} Under review.
-
-    \item[\the\year] \tab{}M. Lowe, D. Adlakha, J.~F. Sallis, D. Salvo, E. Cerin, A.~V. Moudon, C. Higgs, E. Hinckson, J. Arundel, G. Boeing, S. Liu, P. Mansour, K. Gebel, A. Puig-Ribera, P.~B. Mishra, T. Bozovic, J. Carson, J. Dygrýn, A.~A. Florindo, T.~P. Ho, H. Hook, R.~F. Hunter, P. Lai, J. Molina-García, K. Nitvimol, A.~L. Oyeyemi, C.~D.~G. Ramos, E. Resendiz, J. Troelsen, F. Witlox, and B. Giles-Corti. \enquote{City Planning Policies to Support Health and Sustainability: An International Comparison of Policy Indicators for 25 Cities.} Under review.
-
-    \item[\the\year] \tab{}Cerin, E., J.~F. Sallis, D. Salvo, E. Hinckson, T.~L. Conway, N. Owen, D. Van Dyck, M. Lowe, C. Higgs, A.~V. Moudon, M.~A. Adams, K.~L. Cain, L.~B. Christiansen, R. Davey, J. Dygrýn, L.~D. Frank, R. Reis, O.~L. Sarmiento, D. Adlakha, G. Boeing, S. Liu, and B. Giles-Corti. \enquote{Determining Thresholds for Spatial Urban Design and Transport Features to Create Healthy and Sustainable Cities: Findings from the IPEN Adult Study.} Under review.
-
-    \item[\the\year] \tab{}B. Giles-Corti, A.~V. Moudon, M. Lowe, E. Cerin, G. Boeing, H. Frumkin, D. Salvo, S. Foster, A. Kleeman, S. Bekessy, T. Hérick de Sa, M. Nieuwenhuijsen, C. Higgs, E. Hinckson, D. Adlakha, J. Arundel, S. Liu, A.~L. Oyeyemi, K. Nitvimol, and J.~F. Sallis. \enquote{What Next? An Expanded View of City Planning and Global Health, and the Need for Evidence-Informed Policy to Be Implemented and Monitored.} Under review.
-
-    \item[\the\year] \tab{}Higgs, C., J. Rozek, A. Alderton, B. Giles-Corti, H. Badland, C. De Gruyter, D. Adlakha, K. Simons, A. Both, G. Boeing, E. Cerin, A. De Livera, S. Liu, M. Chandrabose, J.~F. Sallis, L. Gunn, and E. Hinckson. \enquote{Calculation of Policy Relevant Spatial Indicators of Urban Liveability: Case Studies of Scaling a Research Programme from Local to Global.} Under review.
-
-    \end{tablist}
-
-
-
-    \section*{Invited Talks}
-
-    \begin{tablist}
-
-
-        \item[2021] \tab{}\enquote{Urban Morphology and Street Network Science.} University of Cincinnati, Department of Geography. Cincinnati, Ohio. Oct 15.
-
-        \item[2021] \tab{}\enquote{Street Network Science and New Urban Data.} Cornell University, Tech Campus. Urban Data guest lecture. New York, New York. Oct 13.
-
-        \item[2021] \tab{}\enquote{Street Networks and the Evolving Urban Structure.} CEMFI Empirical Microeconomics seminar series. Madrid, Spain. Apr 8.
-
-        \item[2021] \tab{}\enquote{Street Network Models and Indicators for Every Urban Area in the World.} University of Bristol and Newcastle University Centre for Data. Spatial Analytics and Data seminar series. Newcastle upon Tyne, England. Jan 26.
-
-        \item[2020] \tab{}\enquote{Street Networks and the Evolving Urban Structure.} University of Chicago, Center for Spatial Data Science and Mansueto Institute for Urban Innovation. Chicago, Illinois. Nov 18.
-
-        \item[2020] \tab{}\enquote{Street Network Models and Indicators for Every Urban Area in the World.} Asian Institute of Management. The Science of Data seminar series. Makati, Philippines. Oct 26.
-
-        \item[2020] \tab{}\enquote{OSMnx for Urban Street Network Analysis.} University of California, Los Angeles, Department of Urban Planning. Introduction to GIS and Spatial Data Science, guest lecture. Los Angeles, California. Oct 26.
-
-        \item[2020] \tab{}\enquote{Introduction to Street Network Analysis with OSMnx.} Alan Turing Institute and University of Warwick. Data Science for Social Good lecture series. London, England. Aug 21.
-
-        \item[2020] \tab{}\enquote{Volunteered Geographic Information in Urban Analytics.} University of California, Berkeley, Department of City and Regional Planning. Introduction to Urban Data Analytics, guest lecture. Berkeley, California. Jun 17.
-
-        \item[2020] \tab{}\enquote{Modeling and Analyzing Urban Street Networks with OpenStreetMap Data.} Bird. Santa Monica, California. May 5 (postponed due to pandemic).
-
-        \item[2020] \tab{}\enquote{Modeling and Visualizing Urban Spatial Form.} California State University, Long Beach, Department of Mathematics and Statistics. Long Beach, California. Apr 24 (postponed due to pandemic).
-
-        \item[2019] \tab{}\enquote{Urban Data Science: Street Networks and Travel Behavior.} Evidation Health. Data Science Seminar Series. Santa Barbara, California. May 16.
-
-        \item[2019] \tab{}\enquote{Network Science for Urban Transportation Modeling and Long-Range Planning.} MIT Megacity Logistics Lab at the Center for Transportation and Logistics. Cambridge, Massachusetts. May 9.
-
-        \item[2019] \tab{}\enquote{Computational Modeling and Analysis in Transportation System Design.} Cornell University. Systems Engineering Seminar Series. Ithaca, New York. Apr 12.
-
-        \item[2019] \tab{}\enquote{Growth, Access, and Resilience as Urban Technology Paradigms Shift.} The World Bank, Global Facility for Disaster Reduction and Recovery. Washington, DC.\@ Apr 3.
-
-        \item[2018] \tab{}\enquote{Computational Urban Street Network Analysis.} Virginia Tech. Urban Computing Seminar Series. Arlington, Virginia. Dec 4.
-
-        \item[2018] \tab{}\enquote{Urban Science and Street Networks.} Massachusetts Institute of Technology, Department of Urban Studies and Planning. Cambridge, Massachusetts. Nov 27.
-
-        \item[2018] \tab{}\enquote{Introduction to Street Network Analysis with OSMnx.} University of Helsinki, Digital Geography Lab. Helsinki, Finland. Nov 16.
-
-        \item[2018] \tab{}\enquote{Urban Street Network Science with OSMnx.} Tufts University, Department of Urban and Environmental Policy and Planning. Somerville, Massachusetts. Nov 15.
-
-        \item[2018] \tab{}\enquote{Free Data for Free Spaces: Democratizing and Disseminating Spatial Network Data and Models for Better Urban Planning.} Venice Biennale of Architecture. Venice, Italy. Oct 24.
-
-        \item[2018] \tab{}\enquote{Online Rental Housing Market Representation and the Digital Reproduction of Urban Inequality.} Harvard University, Joint Center for Housing Studies. Cambridge, Massachusetts. Sep 20.
-
-        \item[2018] \tab{}\enquote{Urban Street Network Science: Modeling, Simulating, and Visualizing Complex Transportation Systems.} Uber Technologies. San Francisco, California. Aug 20.
-
-        \item[2018] \tab{}\enquote{The Study of Street Networks in Urban Data Science.} NYU Center for Data Science. New York, New York. Apr 18.
-
-        \item[2018] \tab{}\enquote{Computational Street Network Analysis in Urban Form Studies.} Columbia University Graduate School of Architecture, Planning, and Preservation. New York, New York. Apr 17.
-
-        \item[2018] \tab{}\enquote{Scalable Methods for Acquiring, Analyzing, and Visualizing Urban Street Networks.} NYU Center for Urban Science and Progress, Applied Urban Science Group. Brooklyn, New York. Apr 16.
-
-        \item[2018] \tab{}\enquote{Studying Urban Form and Resilience through Large-Scale Street Network Analysis.} University of California, Santa Barbara, Department of Geography. Santa Barbara, California. Jan 30.
-
-        \item[2018] \tab{}\enquote{Seeing Cities through New Technologies and Big Data.} University of Oregon, School of Planning, Public Policy, and Management. Eugene, Oregon. Jan 25.
-
-        \item[2018] \tab{}\enquote{Urban Form, Sustainability, and Large-Scale Street Network Analysis.} Northeastern University, School of Public Policy and Urban Affairs. Boston, Massachusetts. Jan 18.
-
-        \item[2018] \tab{}\enquote{Understanding Urban Form and Circulation through Large-Scale Street Network Analysis.} Dartmouth College, Department of Geography. Hanover, New Hampshire. Jan 15.
-
-        \item[2017] \tab{}\enquote{Street Network Analyses of Urban Form Resilience and Equity.} University of Chicago, Mansueto Institute for Urban Innovation. Chicago, Illinois. Nov 2.
-
-        \item[2017] \tab{}\enquote{Measuring Urban Form Sustainability with Topological and Geometric Street Network Analysis.} Stanford University, Sustainable Urban Systems Initiative. Palo Alto, California. Oct 26.
-
-        \item[2017] \tab{}\enquote{Graph-Theoretic Representation and Analysis of Urban Street Networks.} Montana State University, Department of Computer Science. Bozeman, Montana. Oct 16.
-
-        \item[2017] \tab{}\enquote{OpenStreetMap Network Data for Transportation Planning.} Remix Transit Planning. San Francisco, California. Aug 16.
-
-        \item[2017] \tab{}\enquote{Street Networks: Urban Form and Resilience.} University of Florida, Department of Urban and Regional Planning. Gainesville, Florida. May 8.
-
-        \item[2017] \tab{}\enquote{Scalable Methods for Acquiring, Analyzing, and Visualizing Urban Street Networks.} The Santa Fe Institute. Santa Fe, New Mexico. Feb 2.
-
-        \item[2016] \tab{}\enquote{Urban Data Science for Studying Housing Affordability and Urban Form.} NYU Center for Urban Science and Progress. Brooklyn, New York. Dec 14.
-
-        \item[2016] \tab{}\enquote{New Insights into Rental Housing Markets: Web Scraping and Analyzing Craigslist Rental Listings.} City of Oakland. Oakland, California. May 12.
-
-        \item[2016] \tab{}\enquote{New Insights into Rental Housing Markets: Web Scraping and Analyzing Craigslist Rental Listings.} City of San Francisco, Citywide Planning Division. San Francisco, California. Apr 19.
-
-        \item[2016] \tab{}\enquote{Smart Cities, Technology, and Representation: Prospects and Challenges.} Adobe Systems. Sustainability Speaker Series. San Jose, California. Jan 28.
-
-    \end{tablist}
-
-    \subsection*{Campus Talks}
-
-    \begin{tablist}
-
-        \item[2020] \tab{}\enquote{Street Network Models and Indicators for Every Urban Area in the World.} METRANS University Transportation Center Speaker Series. Los Angeles, California. Oct 27.
-
-        \item[2018] \tab{}\enquote{Urban Street Network Science with OSMnx.} Northeastern University Seattle Campus. Seattle, Washington. Nov 28.
-
-        \item[2018] \tab{}\enquote{The Legibility of Urban Spatial Order in Computational Street Network Analysis.} NUVis: Northeastern University Visualization Consortium. Boston, Massachusetts. Oct 18.
-
-        \item[2017] \tab{}\enquote{Urban Street Network Analysis with OSMnx.} Geospatial Innovation Facility, College of Natural Resources, University of California, Berkeley. Berkeley, California. Oct 5.
-
-    \end{tablist}
-
-
-
+\section*{Publications}\label{cvpubs}
+    \nocite{*}
+    \begin{refcontext}[sorting=ydnt]{}
+
+    \printbibliography[title={Conferences},env=myPublicationListYearStyle, type=inproceedings,heading=subbibliography]
+    \printbibliography[keyword={PEER}, title={Journals},env=myPublicationListYearStyle, type=article,heading=subbibliography]
+    \printbibliography[keyword={WORKING}, title={Invited Journals},env=myPublicationListYearStyle, type=article,heading=subbibliography]
+    \printbibliography[keyword={PUB},title={Edited Volumes},env=myPublicationListYearStyle, type=book,heading=subbibliography]
+    \printbibliography[title={Book Chapters},env=myPublicationListYearStyle, type=incollection,heading=subbibliography]
+    \printbibliography[title={Patents},env=myPublicationListYearStyle, type=misc,heading=subbibliography]
+    \end{refcontext}
+
+  
+%    \section*{Invited Talks}
+
+    \nocite{*}
+    \begin{refcontext}[sorting=ydnt]{}
+    \printbibliography[keyword={INVITED}, title={Invited Talks},env=myPublicationListYearStyle, type=book,heading=subbibliography]
+    \printbibliography[keyword={INVITED-LOCAL}, title={Campus Talks},env=myPublicationListYearStyle, type=book,heading=subbibliography]
+    \end{refcontext}
+
+
+\newpage 
+    \section*{Grants and Awards}
+
+Grants participated in as Principal Investigator (PI), Technical Lead (TL) or Contributor (C).
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+      Agency & Role & Amount & Title & GS & Duration \\ \hline
+        \textit{DARPA*} & \textit{PI} & \textit{\$849,289} & \textit{CISOC} & \textit{4} & \textit{sub abs 1/24-1/26} \\
+        DOTE & KP & \$160,000 & TETRA & 1 &9/23-2/24 \\
+        UCLA & PI & \$5,740.00 & Diverse Intelligences  & 1 & 1/22-10/22 \\ 
+        FAA & PI & \$160,000.00 & Human Input Systems for CST  & 3 & 6/21-8/22 \\ 
+        AFRL/BBN & PI & \$134,878.00 & LEAP & 0 & 6/21-9/22 \\ 
+        AFRL/BBN & TL & \$300,000.00 & LWAP-BART & 3 & 7/20-7/22 \\ 
+        AFRL/BBN & TL & \$150,000.00 & WAND  & 2 &  5/19-5/20 \\ 
+        DHS    & TL     & \$1,618,212.00 & FDCE   & 3  & 9/18 - 9/21 \\ 
+        AFRL/BBN & C     & \$212,500.00 & DICE & 1 &8/17-7/19 \\ 
+        DoD    & TL     & \$485,841.00 & MTO & 2 & 11/17-11/18 \\ 
+        DHS    & KP     & \$1,285,246.00 & FC2  & 4 &  7/14-12/18 \\ 
+        AFRL   & TL     & \$1,000,000.00 & SAWD-2 &3 & 1/17-9/18 \\ 
+        AFRL   & KP     & \$1,311,881.00 & SAWD-1 & 3 & 3/15-1/17 \\ 
+        AFRL/BBN & KP     & \$870,000.00 & CHOPD & 1 &  3/15-9/18 \\ 
+        AFRL/BBN & TL     & \$399,000.00 & BART & 2 & 4/16-11/18 \\ 
+        AFRL/BBN & TL     & \$150,000.00 & InDEED & 3  &4/16-4/18 \\ 
+        DHS/IAI & C     & \$522,000.00 & SDNA & 2 & 9/16-9/18 \\ 
+        Securboration & C     & \$150,000.00 & JCAUSE & 0&  1/17-1/19 \\ 
+        AFRL   & KP     & \$1,933,000.00 & SBC2  & 3 & 2/13-11/16 \\ 
+        Rockwell Collins&KP  &\$100,000.00& APM & 1 & 3/14-9/15\\ \hline
+As PI & & 		\$300,618.00 & \\
+As PI/TL last 3 years & & 		\$2,368,830.00 & \\
+As PI/TL & & \$6,336,671.00 & \\
+Total involvement  &&		\$10,948,298.00 & \\ \hline
+    \end{tabular}
+\end{table}
+
+\newpage
     \section*{Conference Activity}
 
-    \subsection*{Keynote and Plenary Addresses}
-
+    \subsection*{Program Committee}
     \begin{tablist}
-
-        \item[2021] \tab{}\enquote{Urban Mobility and Street Network Science.} Regional Studies Association Winter Conference, Regional Studies Regional Science keynote lecture. Online. Nov 8.
-
-        \item[2019] \tab{}\enquote{Geographic Information, Spatial Networks, and the New Urban Science.} American Association of Geographers Annual Meeting, 8\textsuperscript{th} annual \textit{Transactions in GIS} plenary address. Washington, DC.\@ Apr 3--7.
-
-        \item[2018] \tab{}\enquote{The Legible and the Illegible: Urban Science, City Design, and Human Circulation.} The Architect of the Future Conference, plenary address. Moscow, Russia. Sep 10--11.
-
+        \item[2023] \tab{}Senior Committee Florida Conference on Recent Advances in Robotics (FCRAR)
+        \item[2020-22] \tab{}Florida Conference on Recent Advances in Robotics (FCRAR)
+        \item[2022] \tab{}Association for the Advancement of Artificial Intelligence (AAAI) Conference on Artificial Intelligence
+        \item[2022] \tab{}Artificial Intelligence in Education
+        \item[2014-23] \tab{}International Conference on  Biologically Inspired Cognitive Architectures (BICA)
+        \item[2018] \tab{}International Conference on Case-Based Reasoning (ICCBR)
+        \item[2004-14] \tab{}Conferences on Concept Mapping 
+        \item[2002-05] \tab{}Florida Artificial Intelligence Research Society FLAIRS Conference
+        \item[1992] \tab{}Third Workshop on Battlefield Intelligence for AirLand Operations
+        \item[1991] \tab{}The Second Workshop of Weather and Terrain for the Intelligence Preparation of the Battlefield
     \end{tablist}
 
-    \subsection*{Sessions Organized}
-
+    \subsection*{Tracks Chaired}
     \begin{tablist}
-
-        \item[2017] \tab{}\enquote{Emerging Computational Methods in Urban Design.} Association of Collegiate Schools of Planning Annual Conference. Denver, Colorado. Oct 12--15.
-
+        \item[2018] \tab{}\enquote{Human-agent teamwork for cyber operations} Florida Artificial Intelligence Research Society Conference (FLAIRS-31)
     \end{tablist}
 
     \subsection*{Sessions Chaired}
 
     \begin{tablist}
 
-        \item[2021] \tab{}\enquote{Big Data and Machine Learning for Urban Mobility.} Association of Collegiate Schools of Planning Annual Conference. Miami, Florida. Oct 21--23.
-
-        \item[2019] \tab{}\enquote{Machine Learning Methods.} Association of Collegiate Schools of Planning Annual Conference. Greenville, South Carolina. Oct 24--27.
-
-        \item[2019] \tab{}\enquote{Social Systems.} International Conference on Network Science. Burlington, Vermont. May 27--31.
-
-        \item[2018] \tab{}\enquote{Smart Cities Technologies for Transportation Systems.} Smart Cities: Critical Infrastructure Symposium. Seattle, Washington. Nov 29.
+        \item[2021] \tab{}\enquote{Challenges in Teaming.} CAE-R Workshop on the human element in autonomous cyber security, Melbourne, FL
 
     \end{tablist}
 
     \subsection*{Invited Panelist}
-
     \begin{tablist}
-
-        \item[2022] \tab{}\enquote{City Intelligence with Open Data.} Panelist with Jane Macfarlane and Sobhan Moosavi; chaired by Hua Wei. ACM International Conference on Web Search and Data Mining. Phoenix, Arizona. Feb 21--25.
-
-        \item[2021] \tab{}\enquote{Machine Learning in Public Health.} Panelist with Catherine D'Ignazio, Jing Gao, and Alykhan Mohamed; chaired by Rumi Chunara. Conference on Neural Information Processing Systems. Online. Dec 6--14.
-
-        \item[2021] \tab{}\enquote{Plenary Session: AI and Big Data in Real Estate and Urban Studies.} Panelist with Stephanie Sy, Thies Lindenthal, Man Cho, and Warren Wan; chaired by Tien Foo Sing. Joint Real Estate Conference of the American Real Estate and Urban Economics Association, Asian Real Estate Society, and Global Chinese Real Estate Congress. Singapore. Jul 18--21.
-
-        \item[2020] \tab{}\enquote{Nationwide Studies of Urban Form: Evolution, Innovation, and New Opportunities.} Panelist with Reid Ewing, Shima Hamidi, and Catherine Brinkley; chaired by Steven Richter. Association of Collegiate Schools of Planning Annual Conference. Toronto, Canada. Nov 5--8.
-
-        \item[2020] \tab{}\enquote{Urban Data Science Beyond the Hype: Understanding the Challenges and Opportunities of Incorporating Data Science into Urban Planning Pedagogy and Practice.} Panelist with Karen Chapple and Atul Pokharel; chaired by Abigail Cochran and Manuel Santana. Association of Collegiate Schools of Planning Annual Conference. Toronto, Canada. Nov 5--8.
-
-        \item[2019] \tab{}\enquote{Urban Data Science: Methods and Models for Our Changing Cities.} Panelist with Vanessa Frias-Martinez, Wenfei Xu, Song Gao, and Ate Poorthuis; chaired by Levi Wolf and Wei Kang. American Association of Geographers Annual Meeting. Washington, DC.\@ Apr 3--7.
-
-        \item[2018] \tab{}\enquote{Big Ideas Session on Civic Analytics and Urban Science.} Panelist with Luis Bettencourt, Marta Gonz{\'a}lez, and Sarah Williams; chaired by Constantine Kontokosta. Association of Collegiate Schools of Planning Annual Conference. Buffalo, New York. Oct 25--28.
-
-        \item[2018] \tab{}\enquote{Who Benefits from \enquote{Smart City} Technologies? How Can They Be a Piece of the Puzzle Toward Social and Environmental Justice?} Panelist with Lisa Schweitzer, Clint Andrews, and Tom Sanchez; chaired by Mehdi Heris. Association of Collegiate Schools of Planning Annual Conference. Buffalo, New York. Oct 25--28.
-
-        \item[2017] \tab{}\enquote{Public Communication Strategies for Planning Academics.} Panelist with Jennifer Dill, Yingling Fan, and Justin Hollander; chaired by Carissa Slotterback. Association of Collegiate Schools of Planning Annual Conference. Denver, Colorado. Oct 12--15.
-
+      \item[2023] \tab{}''The human element'', Adaptive Cyber Defense 2023, Melbourne, FL
     \end{tablist}
 
-    \subsection*{Symposia}
+    \subsection*{Peer Review}
 
     \begin{tablist}
-
-        \item[2021] \tab{}The Intersection of Smart Cities with Housing and Community Development. Co-hosted by \textit{Housing Policy Debate} and Virginia Tech. Online. Feb 15.
-
-        \item[2019] \tab{}Spatial Data Science Symposium: Setting the Spatial Data Science Agenda. Hosted by the University of California, Santa Barbara. Santa Barbara, California. Dec 9--11.
-
+        \item[2012-21] \tab{}International Conference on Biologically Inspired Cognitive Architectures
+        \item[2004-14] \tab{}International Conference on Concept Mapping
+        \item[2020-23] \tab{}Florida Conference on Recent Advances in Robotics (FCRAR)
+        \item[2022-23] \tab{}Association for the Advancement of Artificial Intelligence (AAAI) Conference on Artificial Intelligence
+        \item[2018] \tab{}International Conference on Case-Based Reasoning (ICCBR)
+        \item[2004-14] \tab{}Conferences on Concept Mapping 
+        \item[2002-05] \tab{}Florida Artificial Intelligence Research Society FLAIRS Conference
     \end{tablist}
-
-    \subsection*{Conference Papers Presented\footnote{Presenting author \textit{italicized} if other than first author. * indicates supervised student coauthor.}}
-
-    \begin{tablist}
-
-        \item[2022] \tab{}Boeing, G., \textit{Y. Lu},* C. Pilgram,* and P. Mannino.* \enquote{Race, Class, and the Production of and Exposure to Vehicular Pollution in Los Angeles.} Association for Public Policy Analysis \& Management Fall Conference. Austin, Texas. Mar 27--29.
-
-        \item[2022] \tab{}Boeing, G., Y. Lu,* C. Pilgram,* and P. Mannino.* \enquote{Local Inequities in the Relative Production of and Exposure to Vehicular Air Pollution in Los Angeles.} American Association of Geographers Annual Meeting. New York, NY.\@ Feb 25--Mar 1.
-
-        \item[2022] \tab{}Boeing, G., \textit{Y. Lu},* C. Pilgram,* and P. Mannino.* \enquote{Local Inequities in the Relative Production of and Exposure to Vehicular Air Pollution in Los Angeles.} Transportation Research Board Annual Meeting. Washington, DC.\@ Jan 9--13.
-
-        \item[2021] \tab{}Jamal, S., E. Desjardins, G. Boeing, R. Lovelace, and A. Paez. \enquote{Using R to Develop Open Source Course Packages with Computational Notebooks: An Example of Transportation Geography.} Innovations in Education Conference. Hamilton, Canada. Dec 9--10.
-
-        \item[2021] \tab{}Higgs, C., J. Rozek, A. Alderton, B. Giles-Corti, H. Badland, C. De Gruyter, D. Adlakha, K. Simons, A. Both, G. Boeing, E. Cerin, A. De Livera, S. Liu,* M. Chandrabose, J.~F. Sallis, L. Gunn, and E. Hinckson. \enquote{Calculation of Policy-Relevant Spatial Indicators of Urban Liveability: Experiences of Scaling a Research Programme from Local to Global.} State of Australasian Cities Conference. Melbourne, Australia. Dec 1--3.
-
-        \item[2021] \tab{}Boeing, G., \textit{Y. Lu},* C. Pilgram,* and P. Mannino.* \enquote{Race, Class, and the Production of and Exposure to Vehicular Pollution in Los Angeles.} Association of Collegiate Schools of Planning Annual Conference. Miami, Florida. Oct 21--23.
-
-        \item[2021] \tab{}Liu, S.,* C. Higgs, J. Arundel, G. Boeing, N. Cerdera,* and D. Moctezuma.* \enquote{A Generalized Framework for Measuring Pedestrian Accessibility around the World Using Open Data.} Association of Collegiate Schools of Planning Annual Conference. Miami, Florida. Oct 21--23.
-
-        \item[2021] \tab{}Boeing, G. \enquote{Street Network Models and Indicators for Every Urban Area in the World.} Transportation Research Board Annual Meeting. Online.\@ Jan 25--29.
-
-        \item[2020] \tab{}Boeing, G. \enquote{Street Network Models, Indicators, and Relationships with Vehicular Emissions for Every Metropolitan Area in the World.} Association of Collegiate Schools of Planning Annual Conference. Online. Nov 5--8.
-
-        \item[2020] \tab{}Higgs, C., S. Liu,* G. Boeing, J. Arundel, M. Lowe, J. Sallis, E. Cerin, A.~V. Moudon, E. Hinckson, D. Adlakha, and B. Giles-Corti. \enquote{Using Open Data to Measure Policy-Relevant Geospatial Indicators of Healthy, Active Urban Environments in 25 Global Cities.} International Society of Behavioral Nutrition and Physical Activity Annual Meeting. Auckland, New Zealand. Jun 17--20 (postponed due to pandemic).
-
-        \item[2020] \tab{}Giles-Corti, B., A.~V. Moudon, M. Lowe, M. Stevenson, D. Adlakha, J. Arundel, E. Cerin, E. Hinckson, D. Salvo, C. Higgs, G. Boeing, S. Liu,* and J. Sallis. \enquote{Creating Healthy Liveable Active Cities: What Gets Measured Gets Done.} International Society of Behavioral Nutrition and Physical Activity Annual Meeting. Auckland, New Zealand. Jun 17--20 (postponed due to pandemic).
-
-        \item[2020] \tab{}Cerin, E., M. Lowe, C. Higgs, A.~V. Moudon, M. Stevenson, D. Adlakha, J. Arundel, E. Hinckson, D. Salvo, G. Boeing, S. Liu,* J. Sallis, and B. Giles-Corti. \enquote{Urban Design and Transport Policies to Create Healthy, Active Cities across the World: What Are They and How Can We Measure Them?} International Society of Behavioral Nutrition and Physical Activity Annual Meeting. Auckland, New Zealand. Jun 17--20 (postponed due to pandemic).
-
-        \item[2020] \tab{}Boeing, G. \enquote{Off the Grid\ldots\ and Back Again? The Recent Evolution of American Street Network Planning and Design.} Western Regional Science Association Annual Meeting. Honolulu, Hawaii. Mar 18--21 (canceled due to pandemic).
-
-        \item[2020] \tab{}Boeing, G. \enquote{The Street Grid and Car Ownership: Trends in US Transportation Network Design.} Transportation Research Board Annual Meeting. Washington, DC.\@ Jan 12--16.
-
-        \item[2019] \tab{}Boeing, G. \enquote{Off the Grid: The Evolution of American Street Network Planning and Design.} Association of Collegiate Schools of Planning Annual Conference. Greenville, South Carolina. Oct 24--27.
-
-        \item[2019] \tab{}Boeing, G. and \textit{W. Riggs} \enquote{Converting One-Way Streets to Two-Way Streets to Improve Transportation Network Efficiency and Reduce Emissions.} Association of Collegiate Schools of Planning Annual Conference. Greenville, South Carolina. Oct 24--27.
-
-        \item[2019] \tab{}Boeing, G. \enquote{Urban Spatial Order: Street Network Orientation, Configuration, and Entropy.} International Conference on Network Science. Burlington, Vermont. May 27--31.
-
-        \item[2019] \tab{}Boeing, G. \enquote{The Legibility of Urban Form: Spatial Information Platforms and Visualization.} International Conference on Urban Experience and Design. Medford, Massachusetts. Apr 26.
-
-        \item[2019] \tab{}Boeing, G. \enquote{Online Rental Housing Market Representation and the Digital Reproduction of Urban Inequality.} Boston Area Research Initiative Annual Conference. Boston, Massachusetts. Apr 26.
-
-        \item[2019] \tab{}Boeing, G. \enquote{The Evolution of American Street Network Design and Planning.} Urban Affairs Association Annual Conference. Los Angeles, California. Apr 24--27.
-
-        \item[2019] \tab{}Abdelkader, A., G. Boeing, \textit{B.~T. Fasy}, and D.~L. Millman. \enquote{Local Persistent Homology-Based Distances between Nonplanar Road Networks.} Joint Mathematics Meetings. Baltimore, Maryland. Jan 16--19.
-
-        \item[2018] \tab{}Abdelkader, A., G. Boeing, B.~T. Fasy, and D.~L. Millman. \enquote{Topological Distance Between Nonplanar Transportation Networks.} Fall Workshop on Computational Geometry. Queens, New York. Oct 26--27.
-
-        \item[2018] \tab{}Boeing, G. \enquote{Sociodemographic Representation of Online Rental Housing Listings: Information Surpluses and Deficits.} Association of Collegiate Schools of Planning Annual Conference. Buffalo, New York. Oct 25--28.
-
-        \item[2018] \tab{}Waddell, P., I. Garcia-Dorado, S. Maurer, G. Boeing, M. Gardner, E. Porter, and D. Aliaga. \enquote{Urban Modeling Without Zones: A Metropolitan Graph-Based Microsimulation of Real Estate Markets and Transportation.} Association of Collegiate Schools of Planning Annual Conference. Buffalo, New York. Oct 25--28.
-
-        \item[2018] \tab{}Boeing, G. \enquote{Transportation Network Modeling and Urban Equity.} Dukakis Center for Urban and Regional Policy Transportation Equity Conference. Boston, Massachusetts. Oct 19.
-
-        \item[2018] \tab{}Waddell, P., I. Garcia-Dorado, S. Maurer, G. Boeing, M. Gardner, E. Porter, and D. Aliaga. \enquote{Architecture for Modular Microsimulation of Real Estate Markets and Transportation.} Symposium on Applied Urban Modelling. Cambridge, England. Jun 27--29.
-
-        \item[2017] \tab{}Boeing, G. \enquote{New Methods for Acquiring and Analyzing Worldwide Street Network Data: A Multiscale Analysis of 27,000 Urban Street Networks.} Association of Collegiate Schools of Planning Annual Conference. Denver, Colorado. Oct 12--15.
-
-        \item[2016] \tab{}Boeing, G. \enquote{Craigslist and U.S. Rental Housing Markets.} American Planning Association Annual Conference. Phoenix, Arizona. Apr 2--5.
-
-        \item[2016] \tab{}Boeing, G. \enquote{Understanding Informal Rental Housing Markets through Public Data.} American Association of Geographers. San Francisco, California. Mar 29--Apr 2.
-
-        \item[2016] \tab{}Barajas, J.~M., G. Boeing, and \textit{J. Wartell}. \enquote{Neighborhood Change, One Pint at a Time: The Impact of Local Characteristics on Craft Breweries.} Urban Affairs Association Annual Conference. San Diego, California. Mar 16--19.
-
-        \item[2015] \tab{}Boeing, G. \enquote{Methods for Measuring the Aggregate Complexity Outcomes of Urban Design.} International Conference on Complex Systems. Tempe, Arizona. Sep 28--Oct 2.
-
-        \item[2015] \tab{}Boeing, G. \enquote{Pedagogy of Urban Informatics.} Environmental Design Circus. Berkeley, California. Mar 6.
-
-        \item[2014] \tab{}Boeing, G. and P. Waddell. \enquote{Web Scraping Urban Data: Lessons from the Lab and the Classroom.} Association of Collegiate Schools of Planning Annual Conference. Philadelphia, Pennsylvania. Oct 30--Nov 2.
-
-        \item[2014] \tab{}Boeing, G., D. Church, H. Hubbard, J. Mickens, and L. Rudis. \enquote{LEED-ND and Perceptions of Livability.} Environmental Design Circus. Berkeley, California. Mar 13.
-
-    \end{tablist}
-
-
-
-    \section*{Grants and Awards}
-
-    \subsection*{Awards and Honors}
-
-    \begin{tablist}
-
-        \item[2021] \tab{}USC Price Bronze Level Research Award
-        \item[2021] \tab{}USC Price ASPD Golden Apple Award for teaching excellence
-        \item[2020] \tab{}Stough-Johansson Springer Award, best WRSA paper by an early-career scholar
-        \item[2019] \tab{}Network Science Society Visualization Prize finalist
-        \item[2018] \tab{}Information Is Beautiful Awards shortlist
-        \item[2014] \tab{}Kaye Bock Award, best journal article
-        \item[2010] \tab{}Accenture Inventor Innovation Award
-
-    \end{tablist}
-
-    \subsection*{Grants and Fellowships}
-
-    \begin{tablist}
-
-        \item[2020--22] \tab{}Connections Between Built Environments, Policy, and Public Health (\$200,000). The Public Good Projects research grant. PI.\@
-
-        \item[2021--22] \tab{}Improving the Accuracy of Intersection Counts and Densities for Measuring Urban Street Network Compactness and Resilience (\$100,000). Caltrans/Pacific Southwest Region University Transportation Center research grant. PI.\@
-
-        \item[2020--21] \tab{}Race, Class, and the Production of and Exposure to Vehicular Pollution in Los Angeles (\$100,000). US Department of Transportation/Pacific Southwest Region University Transportation Center research grant. PI.\@
-
-        \item[2019] \tab{}Urban Form Impact: Humans, Environment, Equity (\$50,000). NU Tier 1 research grant. Co-PI with Sara Carr and Jay Cephas.
-
-        \item[2019] \tab{}NU CSSH summer research matching grant (\$6,000). PI.\@
-
-        \item[2019] \tab{}NU Lab for Maps, Texts, and Networks research grant (\$2,500). PI.\@
-
-        \item[2018] \tab{}ACSP FWIG Emerging Scholar travel grant (\$500)
-
-        \item[2018] \tab{}NU Lab for Maps, Texts, and Networks travel grant (\$1,000)
-
-        \item[2018] \tab{}Northeastern University research fund (\$25,000)
-
-        \item[2016--17] \tab{}University of California Doctoral Completion Fellowship (\$36,655)
-
-        \item[2016] \tab{}UC Berkeley DCRP travel grant (\$500)
-
-        \item[2016] \tab{}University of California Graduate Division travel grant (\$900)
-
-        \item[2015] \tab{}UC Berkeley DCRP travel grant (\$500)
-
-        \item[2012--16] \tab{}University of California Regents' Fellowship (\$158,025)
-
-    \end{tablist}
-
 
 
     \section*{Courses Taught}
 
-    \subsection*{University of Southern California}
-
     \begin{itemize}
-
-        \item Urban Informatics
-        \item Advanced Urban Analytics
-        \item Data, Evidence, and Communication for the Public Good
-
+        \item CSE5800 Interacting with Large Language Models (Created)
+        \item HCD6380 Creative and Design Thinking (Created)
+        \item HCD5802 Usability Engineering (Created)
+        \item HCD6701 Research Methods (Created) 
+        \item CYB5800 Information Visualization (Created)
+        \item CSE5400 Introduction to Human-Centered Design (Created)
+        \item CSE5800 Deep Learning (Created)
+        \item CSE5290 Introduction to Artificial Intelligence (Created)
+        \item CSE5310 Management and Processing of Big Data (Created)
+        \item CYB5800 Network Security Reasoning (Created) 
+        \item CYB5675 Data Mining for Cybersecurity (Created)
     \end{itemize}
-
-    \subsection*{Northeastern University}
-
-    \begin{itemize}
-
-        \item Urban Theory and Science
-        \item Advanced Spatial Analysis of Urban Systems
-        \item Big Data for Cities
-
-    \end{itemize}
-
-    \subsection*{University of California, Berkeley}
-
-    \begin{itemize}
-
-        \item Urban Informatics and Visualization (graduate student instructor)
-
-    \end{itemize}
-
-    \subsection*{Planetizen}
-
-    \begin{itemize}
-
-        \item Python for Planners
-        \item Data Analysis and Visualization for Planners
-        \item Geospatial Data Analysis
-        \item Street Network Analysis
-
-    \end{itemize}
-
-
 
     \section*{Service}
 
     \subsection*{Academic Journal Editorial Boards}
 
     \begin{itemize}
-
-        \item \textit{Urban Studies}, 2021--
-        \item \textit{Urban Findings}, 2020--
-
+        \item \textit{Journal of Theoretical and Experimental Artificial Intelligence}  2016--
     \end{itemize}
 
     \subsection*{Academic Journal Peer Review}
 
     \begin{itemize}
-
-        \item \textit{American Behavioral Scientist}
-        \item \textit{American Journal of Sociology}
-        \item \textit{American Sociological Review}
-        \item \textit{Annals of the American Association of Geographers}
-        \item \textit{Applied Network Science}
-        \item \textit{Case Studies on Transport Policy}
-        \item \textit{Cities}
-        \item \textit{Computers, Environment and Urban Systems}
-        \item \textit{Environment and Planning A:\ Economy and Space}
-        \item \textit{Environment and Planning B:\ Urban Analytics and City Science}
-        \item \textit{European Physical Journal: Data Science}
-        \item \textit{Geo: Geography and Environment}
-        \item \textit{Geographical Analysis}
-        \item \textit{International Journal of Geographical Information Science}
-        \item \textit{International Planning Studies}
-        \item \textit{International Regional Science Review}
-        \item \textit{ISPRS International Journal of Geo-Information}
-        \item \textit{Journal of the American Planning Association}
-        \item \textit{Journal of Open Source Education}
-        \item \textit{Journal of Planning Education and Research}
-        \item \textit{Journal of Planning Literature}
-        \item \textit{Journal of Transport and Land Use}
-        \item \textit{Journal of Transport Geography}
-        \item \textit{Journal of Urban Technology}
-        \item \textit{Landscape and Urban Planning}
-        \item \textit{Mathematics}
-        \item \textit{Nonlinear Dynamics}
-        \item \textit{Physica A:\ Statistical Mechanics and Its Applications}
-        \item \textit{PLOS One}
-        \item \textit{Proceedings of the National Academy of Sciences}
-        \item \textit{The Professional Geographer}
-        \item \textit{Region}
-        \item \textit{Research in Transportation Economics}
-        \item \textit{Scientific Reports}
-        \item \textit{Social Forces}
-        \item \textit{Social Indicators Research}
+        \item \textit{Journal of Theoretical and Experimental Artificial Intelligence}
+        \item \textit{IEEE Transactions on Cybernetics}
+        \item \textit{IEEE Transactions on Systems, Man, and Cybernetics}
         \item \textit{Sustainability}
-        \item \textit{Sustainable Cities and Society}
-        \item \textit{Town Planning Review}
-        \item \textit{Transactions in GIS}
-        \item \textit{Transport Findings}
-        \item \textit{Transport Policy}
-        \item \textit{Transport Reviews}
-        \item \textit{Transportation Research Part D:\ Transport and Environment}
-        \item \textit{Transportation Research Record}
-        \item \textit{Urban Design International}
-        \item \textit{Urban Planning}
-        \item \textit{Urban Science}
-        \item \textit{Urban Studies}
-
-    \end{itemize}
-
-    \subsection*{Academic Press Peer Review}
-
-    \begin{itemize}
-
-        \item Cambridge University Press
-        \item Routledge
-        \item Springer Nature
-
+        \item \textit{Applied Sciences}
+        \item \textit{Multimodal Technologies and Interaction}
+        \item \textit{Frontiers in Psychology}
+        \item \textit{Electronics}
+        \item \textit{Information}
+        \item \textit{Biologically Inspired Cognitive Architectures (BICA) Journal}
     \end{itemize}
 
     \subsection*{Funding Agency Peer Review}
@@ -756,92 +823,99 @@
     \begin{itemize}
 
         \item National Science Foundation
-        \item Research Grants Council of Hong Kong
-        \item Social Sciences and Humanities Research Council of Canada
 
     \end{itemize}
 
-    \subsection*{Service to Field}
+    \subsection*{Service to University}
 
     \begin{itemize}
+        \item Served on the University Library Committee
+        \item Served on the University Research Council
+    \end{itemize}
 
-        \item Review and Appraisal Committee, Association of Collegiate Schools of Planning, 2021--22
-        \item Program Committee, Spatial Data Science Symposium, 2021
-        \item Co-Lead, Emerging Data and Technologies track, World Society for Transport and Land Use Research Conference, 2021
-        \item Outreach and Engagement Task Force, Association of Collegiate Schools of Planning, 2019--2021
-        \item Program Committee, Future Cities Challenge, 2019--20
-        \item Review and Appraisal Committee, Association of Collegiate Schools of Planning, 2018--20
-        \item Scientific Committee, Symposium on Simulation for Architecture and Urban Design, 2018--20
-        \item Book review editor, \textit{Berkeley Planning Journal}, 2013--14
+    \subsection*{Service to College}
 
+    \begin{itemize}
+        \item Served as Co-Chair of the College Promotion and Tenure Committee
+        \item Served on the College Promotion and Tenure Committee
+        \item Served as Co-Chair of the COES Dean search committee
     \end{itemize}
 
     \subsection*{Service to Department}
 
     \begin{itemize}
-
-        \item Ph.D. Degree Committee, USC Price, 2020--22
-        \item Research Committee, USC Price, 2020--21
-        \item Chair, Urban Planning and Development Ph.D. Admissions Sub-Committee, USC Price, 2020--21
-        \item Hiring Search Committee, USC DUPSA, 2019--20
-        \item Standing Committee on Digital Proficiencies and Quantitative Methods, Northeastern CSSH, 2018--19
-        \item Ph.D. program faculty representative, UC Berkeley DCRP, 2015--16
-        \item Ph.D. program admissions committee, UC Berkeley DCRP, 2015--16
-
+        \item Redeveloped Human Centered Design Master's and Ph.D. programs
+        \item Admissions for Human Centered Design Master's and Ph.D. programs
+        \item Assisted in creation and development of Data Science Certificate and Degree Program
+        \item Developed four of the five required HCD core classes (with support from graduate students)
+        \item Developed CYB 5675  Data mining for cybersecurity course for on campus and on line use
     \end{itemize}
 
-    \subsection*{Doctoral Committees}
+    \subsection*{Doctoral Advisor (graduates in bold)}
 
     \begin{itemize}
-
-        \item Robert Binder, USC Price, exam committee
-        \item David Rosas Flores, USC Price, exam committee
-        \item Thu Nguyen, USC Price, exam committee
-        \item Clemens Pilgram, USC Price, exam committee
-        \item Bonnie Wang, USC Price, exam committee
-        \item Mengya Xu, USC Spatial Sciences Institute, exam committee
-        \item Li Yi, USC Spatial Sciences Institute, exam committee
-
+        \item \textbf{2022 Vijayanth Tummala, Advancing Human-Agent Teamwork, CS PhD, Assistant Professor, Embry-Riddle Aeronautical University, Daytona Beach, FL}
+        \item \textbf{2021 Troy Ricardo Weekes, Flow Choice Architecture: Cognitive Augmentation of Knowledge Workers, HCD PhD, Research Associate L3Harris Institute for Assured Information, Melbourne, FL}
+        \item \textit{expected Spring 2024} Kazuhiko Momose, Compositional Human-Agent Teams, HCD PhD Candidate
+        \item current Ali Mohammad K Almashykhi, CS PhD
+        \item current Alita Regi, HCD PhD
+        \item current Hisham Ghunaim, HCD PhD
+        \item current Victor Kitmanyen, HCD PhD
+        \item current Warren Harrell, HCD PhD
+        \item current Waseem Samkari, CS PhD
     \end{itemize}
 
-    \subsection*{Studio Review Jury}
+    \subsection*{Masters Advisor (graduates in bold)}
 
     \begin{itemize}
-
-        \item MIT, Workshop on Geographic Information Systems (Prof.\ Sarah Williams), Fall 2018
-
+        \item \textbf{2022 Brad Thomas Costa, A Co-Evolutionary Approach to Test Case Generation for Safety-Critical Systems, CS MS, Directory of Engineering, Sentry View Systems, Melbourne, FL}
+        \item \textbf{2020 Kleanthis Zisis Tegos, Real-Time Action Classification using Intermediate Skeletal Pose Estimation, CS MS, Software Engineer, Microsoft, Miami, FL}
+        \item \textbf{2018 Daljeet Kaur Kaushal, Big Data Architectures for Deep Learning, CS MS, Software Associate, Goldman Sachs, Jersey City, New Jersey}
+        \item \textbf{2018 Tyler Culp, Infrastructure-based Access Policy Enforcement using Software-Defined Networks, CS MS, Software Engineer, Maxar Technologies, Melbourne FL}
+        \item current Andrew Biron, HCD MS
+        \item current Bianca Ebanks, HCD MS
+        \item current Lalith Nadipalli, HCD MS
+        \item current Rahul Mehta, CS MS
+        \item Ruchir Gupta, HCD MS, Product Designer, Prototype Lab at Groundswell, Inc., Melbourne FL
+        \item current Shivanand Gujjari, HCD MS
+        \item current Srushti Nitin Ghadge, HCD MS
+        \item current Uditkumar Ajitkumar Nair, HCD MS
     \end{itemize}
 
+    \subsection*{Committee}
+    \begin{itemize}
+    \item current Natalie N Shah, Virtual Teams as an analog (or proxy) model for evaluating ROI of human-AI team interactions, Business PhD
+    \item current Christopher Stricklan, Binary Diversity, Computer Science PhD
+    \item current Candice Chambers, Computer Science PhD
+    \item  2023 Eric Lawrence Demirjian, Artificial Intelligence Superteams \& Augmentation Strategies: Increasing Performance of High-Functioning Virtual Team Members Via Human Machine Teaming Enhancements, Business PhD
+    \item 2022 Kendall A Carmody, The Effect of Level of Immersion on Learning in a Virtual Maintenance Training Task, AHF MS External
+    \item 2021 Haoruo Fu, Assessment of the Skeletonization and Motion Monitoring System for the Security Efficiency of the United States Airports, Applied Aviation Safety MS
+    \item 2021 James Riswick-Estelle, Algorithms for Algorithms: Teaching Problem-Solving in Computer Science, ABA OBM MS External
+    \item 2020 Mary Catherine (Kay) Michel, A Bio-inspired Classification System for Cyber-Physical-Human Identity Resolution, CS PhD
+    \item 2019 Seyed Mohammad Mahdi Seyednezhad, A Network-Driven Approach for Characterizing Emoji Usage in Social Media, CS PhD
+    \item 2019 Sharon Sue Chinoy, Human-Centered Enterprise Resource Maintenance Management, HCD PhD
+    \item 2019 Milton Stafford, Applying Formal Methods for Integrating Advanced Algorithms in Safety Critical Systems, CS MS
+    \item 2018 Fitzroy Nembhard, A Recommender System for Improving Program Security Through Source Code Mining and Knowledge Extraction, CS PhD
+    \item 2018 Ondrej Doule, Adaptive Spaceship Cockpit Architecture, HCD PhD    
+    \item 2018 Timothy A Davis, Illegitimate Tasks and Employee Silence: A Moderated Mediation Model, IOP MS External
+    \item 2018 Dhanish Mehta, On the Automation of Cyber Experimentation, CS MS
+    \item 2018 Ed Mathews, Non-thesis, Meteorology MS
+    \item 2018 Caleb Ryberg, Non-thesis, Meteorology MS
+    \item 2017 Samir Mammadov, High Fidelity Adaptive Cyber Emulation, IACyber MS
+    \item 2016 Punica Bhardwaj, Soteria: A Persuasive eSecurity Assistant, IACyber MS
+    \item 2015 Evan Lawrence Stoner, A Foundation for Cyber Experimentation CS MS
 
+    \end{itemize}
 
     \section*{Memberships}
 
     \begin{itemize}
 
-        \item American Association of Geographers
-        \item American Planning Association
-        \item Association of Collegiate Schools of Planning
-        \item Association for Computing Machinery
-        \item Complex Systems Society
-        \item Network Science Society
-        \item New York Academy of Sciences
-        \item Project Management Institute
-        \item Python Software Foundation
-        \item Regional Studies Association
-        \item Urban Affairs Association
-
-    \end{itemize}
-
-
-
-    \section*{Credentials}
-
-    \begin{itemize}
-
-        \item U.S. Department of Defense secret clearance
-        \item U.S. Department of Homeland Security public trust
-        \item Project Management Professional (PMP)
-
+        \item Association for the Advancement of Artificial Intelligence (AAAI)
+        \item American Association for the Advancement of Science (AAAS)
+        \item Sigma Xi
+        \item Cognitive Science Society
+        \item Institute of Electrical and Electronics Engineers (IEEE)
     \end{itemize}
 
 
@@ -849,29 +923,18 @@
     \section*{Consulting}
 
     \begin{tablist}
-
-        \item[2017--19] \tab{}The Public Good Projects, New York, New York
-        \item[2017--18] \tab{}Calthorpe Analytics, Berkeley, California
-        \item[2016--18] \tab{}UrbanSim Inc., Berkeley, California
-        \item[2013--18] \tab{}Avalon Health Economics, Morristown, New Jersey
-        \item[2013]     \tab{}Raimi \& Associates, Berkeley, California
-        \item[2010--11] \tab{}Voluntary Service Overseas, London, England
-
+        \item[2020--  ] \tab{}HyLighter, LLC, Tallahassee, FL
+        \item[2021--21] \tab{}Sentry View Systems, Melbourne, FL
+        \item[2016--17] \tab{}Modus Operandi, Melbourne, FL
     \end{tablist}
 
+\subsection*{Supporting Documentation for Teaching and Related Activities}
+Course evaluations are included in the file ``Eskridge-course-evaluations.pdf''
 
+\subsection*{Supporting Documentation for Research and Related Activities}
+A collection of the first page of many of my papers and patents are included in the file ``Eskridge-titlepages.pdf''.  A selection of representative papers is included in the file ``Eskridge-FivePapers.zip''.  Access to all full papers is available at \url{https://www.thomaseskridge.com}.
 
-    \section*{Professional Employment}
-
-    \begin{tablist}
-
-        \item[2009--13] \tab{}Accenture, New York, New York; London, England; San Diego, California
-        \item[2007--09] \tab{}Permission Data, New York, New York
-        \item[2004--07] \tab{}Acumen Inc., Mesa, Arizona
-
-    \end{tablist}
-
-
+\end{document}
 
     % display today's date as Month Year after a vertical space below the end of the text
     \begin{center}
@@ -879,4 +942,28 @@
         Updated \monthyeardate\today
     \end{center}
 
-\end{document}
+
+
+% Items in this appendix would normally include copies of papers, but could also include copies of proposal abstracts, letters of research awards, or letters of notification of honors, such as outstanding paper awards. If the list of research activities called for in "Research and Scholarly Activities" (Section III) is extensive, it could be included here and referred to in that section.
+
+% \subsection*{Supporting Documentation for Service Activities}
+% Items included here could be letters of commendation, copies of service reports authored by the candidate, or more detailed descriptions of service than is possible in "Service Activities" (Section IV).
+
+% \subsection*{Supporting Documentation for Professional Practice}
+% Items included here might include notification of professional registration, letters of commendation for consulting or clinical practice, or syllabi and manuals developed for short-courses, workshop or conferences.
+
+% \subsection*{Department Head Letter of Nomination}
+% This appendix will contain two important letters:
+
+% \begin{itemize}
+% \item A brief letter from the candidate addressed to the department head/program chair that states "This letter certifies that I have reviewed my dossier and that the entries and substantiation thereof are accurate."
+% \item A letter from the department head/program chair nominating the candidate for promotion. The letter should state the degree of support for the nomination in the department/program. For promotion to full professor, identifying the support of the department’s/program’s full professors is important. Copies of the faculty member’s annual goal/performance evaluations for the past three years could be included in this appendix.
+% \end{itemize}
+
+% \subsection*{Letters of Recommendation from Outside Reviewers}
+% Include a brief statement of the credentials of each person from whom letters have been solicited. It is expected that for promotion to full (associate) professor at least five (three) letters will be solicited. Include what aspect of the candidate’s performance the referee is competent to judge and why. Include all letters received. These letters should be added to the dossier by the department head/program chair after the candidate has made his/her final review of the dossier to afford the recommender’s confidentiality.
+
+% The academic unit head should write all requests for evaluations. The candidate should not solicit these letters although s/he may suggest names of references. The letters of request should clearly state what kind of an evaluation is being sought (the factors to be evaluated, the rank for which the person is being recommended and other pertinent information). Wherever reasonable, one or both of the following questions should be asked. From what you know of this person, would you recommend him/her for promotion at your institution?
+
+% Where does the candidate rank among his/her peers? As a courtesy to those being asked to write letters, a current copy of the candidate’s résumé should be sent.
+

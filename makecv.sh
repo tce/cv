@@ -1,6 +1,6 @@
 cd ../tce.github.io
 git checkout source
-cd ../cv-old
+cd ../cv
 
 mv papers.bib papers.bibSAV
 cp ../tce.github.io/_bibliography/papers.bib papers.bib
